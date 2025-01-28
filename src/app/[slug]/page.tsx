@@ -1,9 +1,11 @@
 import { getStoryblokApi, StoryblokStory } from "@storyblok/react/rsc";
 import { redirect } from "next/navigation";
+import { getAllResor } from "../lib/get-all-resor";
 
 async function fetchData(slug: string) {
   let sbParams = {
     version: "draft" as const,
+    language: process.env.STORYBLOCK_LANG,
   };
 
   const client = getStoryblokApi();
@@ -28,8 +30,15 @@ const Page = async ({ params }: { params: { slug: string } }) => {
   const pathname = params.slug;
   const slugName = pathname === undefined ? `home` : pathname;
   const story = await fetchData(slugName);
-  console.log(story.data.data);
-  return <StoryblokStory story={story.data.data.story} />;
+  const resor = await getAllResor();
+  const lang = process.env.STORYBLOCK_LANG;
+  return (
+    <StoryblokStory
+      story={story.data.data.story}
+      resor={resor.data.data.stories}
+      lang={lang}
+    />
+  );
 };
 
 export default Page;
