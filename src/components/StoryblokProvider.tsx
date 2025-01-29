@@ -10,6 +10,7 @@ import { LogoBlock } from "./logo-block";
 import { FilterPackage } from "./filter-package";
 import { Tabel } from "./tabel";
 import { FilterBlock } from "./filter-block";
+import { ContactForm } from "./contact_form";
 
 storyblokInit({
   components: {
@@ -23,6 +24,7 @@ storyblokInit({
     tabel: Tabel,
     filter_block: FilterBlock,
     filter_packages: FilterPackage,
+    contact_form: ContactForm,
   },
   enableFallbackComponent: true,
 });

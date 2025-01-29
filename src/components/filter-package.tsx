@@ -4,10 +4,8 @@ import Image from "next/image";
 import { render } from "storyblok-rich-text-react-renderer";
 import useStore from "./lib/store";
 import Link from "next/link";
-import { StandardForm } from "@/app/components/form/standard-form";
 
 export const FilterPackage = ({ blok, resor }: any) => {
-  console.log(blok);
   const { filter } = useStore();
 
   const filteredResor = (() => {
@@ -38,8 +36,8 @@ export const FilterPackage = ({ blok, resor }: any) => {
     <div>
       <div className={`w-[90%] m-auto ${blok.smaller_cards && "mb-24"}`}>
         <h2
-          className={`${
-            blok.smaller_cards ? "-mt-20 text-center mb-16" : "mt-16"
+          className={`${blok.smaller_cards && "-mt-20 text-center mb-16"} ${
+            filter === "Tournament resor" ? "mt-0" : "mt-16"
           }`}
         >
           {(filter === "Tournament resor" &&
@@ -52,7 +50,7 @@ export const FilterPackage = ({ blok, resor }: any) => {
         <div
           className={`w-[100%] grid grid-cols-1  gap-6 mt-4 ${
             blok.smaller_cards ? "lg:grid-cols-4" : "lg:grid-cols-3"
-          }`}
+          } ${filter === "Padel resor" && "-mb-[2rem]"}`}
         >
           {filteredResor.map(
             (el: any, index: number) =>
