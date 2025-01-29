@@ -13,7 +13,6 @@ import { IoIosArrowDown } from "react-icons/io";
 import useStore from "@/components/lib/store";
 import { DropDown } from "./ui/dropdown";
 import { Tabel } from "./tabel";
-import { FilterPackage } from "./filter-package";
 
 export const Packages = ({ paket, blok, resor }: any) => {
   const { openDropdown, setOpenDropdown, openCalender, setOpenCalender } =
@@ -23,9 +22,6 @@ export const Packages = ({ paket, blok, resor }: any) => {
     setOpenDropdown(!state);
   };
 
-  const handleOpenCalender = (state: boolean) => {
-    setOpenCalender(!state);
-  };
   const { content } = paket.data.data.story;
 
   return (
