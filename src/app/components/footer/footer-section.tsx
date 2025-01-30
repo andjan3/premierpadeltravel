@@ -47,17 +47,22 @@ const FooterSection = ({ props }: any) => {
           <div className="linkWrapper">
             <LinkBtn
               className="smallText"
-              link={Resevillkor.cached_url}
+              link={`/${Resevillkor.cached_url.replace(/^(da|en)\//, "")}`}
               title={ReseVillkorTitle}
             />
+
             <LinkBtn
               className="smallText"
-              link={Integritetspolicy.url}
+              link={`${Integritetspolicy.cached_url.replace(
+                /^\/(da|en)\//,
+                ""
+              )}`}
               title={IntegritetTitle}
             />
+
             <LinkBtn
               className="smallText"
-              link={CookiePolicy.url}
+              link={`${CookiePolicy.cached_url.replace(/^\/(da|en)\//, "")}`}
               title={CookieTitle}
             />
           </div>

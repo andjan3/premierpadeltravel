@@ -6,7 +6,11 @@ export const ContactForm = () => {
   return (
     <div
       className={`${
-        filter === "Alla resor" ? "flex justify-center" : "hidden"
+        filter === "Alla resor" ||
+        filter === "All trips" ||
+        filter === "Alle resor"
+          ? "flex justify-center"
+          : "hidden"
       }`}
     >
       <StandardForm />

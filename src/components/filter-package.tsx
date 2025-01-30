@@ -11,18 +11,26 @@ export const FilterPackage = ({ blok, resor }: any) => {
   const filteredResor = (() => {
     switch (filter) {
       case "Padel resor":
+      case "Padel travel":
         return resor.filter(
           (el: any) =>
             el.content.category.includes("padel-resor") &&
-            blok.title === "Resmål"
+            (blok.title === "Resmål" ||
+              blok.title === "Destination" ||
+              blok.title === "Bestemmelsessted")
         );
       case "Tournament resor":
+      case "Tournament travel":
+      case "Turneringsresort":
         return resor.filter(
           (el: any) =>
             el.content.category.includes("tournament-resor") &&
-            blok.title === "Premier padel resor"
+            (blok.title === "Premier padel resor" ||
+              blok.title === "Premier padel trips" ||
+              "Premier padel ture")
         );
       case "Flexibla resor":
+      case "Flexible travel":
         return resor.filter((el: any) =>
           el.content.category.includes("flexibla-resor")
         );
@@ -36,27 +44,31 @@ export const FilterPackage = ({ blok, resor }: any) => {
     <div>
       <div className={`w-[90%] m-auto ${blok.smaller_cards && "mb-24"}`}>
         <h2
-          className={`${blok.smaller_cards && "-mt-20 text-center mb-16"} ${
+          className={`${blok.smaller_cards && "!-mt-20 text-center mb-16 "} ${
             filter === "Tournament resor" ? "mt-0" : "mt-16"
           }`}
         >
           {(filter === "Tournament resor" &&
             blok.title !== "Premier padel resor") ||
           (filter === "Padel resor" && blok.title !== "Resmål") ||
-          filter === "Flexibla resor"
+          filter === "Flexibla resor" ||
+          filter === "Turneringsresort"
             ? null
             : blok.title}
         </h2>
         <div
-          className={`w-[100%] grid grid-cols-1  gap-6 mt-4 ${
+          className={`w-[100%] grid grid-cols-1 gap-6 mt-4 ${
             blok.smaller_cards ? "lg:grid-cols-4" : "lg:grid-cols-3"
           } ${filter === "Padel resor" && "-mb-[2rem]"}`}
         >
           {filteredResor.map(
-            (el: any, index: number) =>
+            (el: any) =>
               blok.package.includes(el.uuid) && (
-                <Link href={`${el.full_slug}`}>
-                  <div key={index}>
+                <Link
+                  href={`/${el.full_slug.replace(/^(da|en)\//, "")}`}
+                  key={el.uuid}
+                >
+                  <div>
                     <div className="bg-white rounded-lg shadow-lg">
                       <div
                         className={`relative ${
