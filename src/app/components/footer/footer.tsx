@@ -9,9 +9,9 @@ async function fetchData() {
   return res.json();
 }
 
-const Footer = async () => {
+const Footer = async ({ lang }: any) => {
   const story = await fetchData();
-  return <FooterSection props={story} />;
+  return <FooterSection props={story} lang={lang} />;
 };
 
 export default Footer;

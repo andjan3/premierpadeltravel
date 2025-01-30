@@ -3,9 +3,16 @@ import { useState } from "react";
 import LinkBtn from "../../../components/link-btn";
 import Image from "next/image";
 import { IoMdClose } from "react-icons/io";
+import useStore from "@/components/lib/store";
 
 const HeaderSection = (props: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { lang, setLang } = useStore();
+
+  const handleLangChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedLang = e.target.value;
+    setLang(selectedLang);
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -17,7 +24,7 @@ const HeaderSection = (props: any) => {
   const secondMenuItems = header_menu.slice(3, 5);
 
   return (
-    <nav className="flex  items-center bg-white border-gray-200 dark:bg-gray-900">
+    <nav className="flex  items-center bg-white border-gray-200">
       <div className="flex-nowrap flex-row-reverse max-w-screen-xl flex  items-center justify-between mx-auto p-4">
         {/* Hamburgermeny-knapp */}
         <button
@@ -132,10 +139,15 @@ const HeaderSection = (props: any) => {
         </div>
       </div>
       <form className="w-[10%]">
-        <select name="" id="" defaultValue={""}>
-          <option value="swedish">Svenska</option>
-          <option value="danish">Danska</option>
-          <option value="english">Engelska</option>
+        <select
+          name="language"
+          id="language-select"
+          value={lang}
+          onChange={handleLangChange}
+        >
+          <option value="sv">Svenska</option>
+          <option value="da">Danska</option>
+          <option value="en">Engelska</option>
         </select>
       </form>
     </nav>

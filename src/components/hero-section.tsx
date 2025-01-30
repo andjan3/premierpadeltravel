@@ -72,7 +72,7 @@ const HeroSection = ({ blok }: any) => {
         {!heroImage && (
           <div className="mt-8">
             <LinkBtn
-              link={button.cached_url}
+              link={`${button.cached_url.replace(/^\/(da|en)\//, "/")}`}
               title={buttonTitle}
               className="bg-[#f26627] uppercase text-xs pt-3.5 pb-3.5 pl-7 pr-7 hover:bg-[#052f63]"
             />

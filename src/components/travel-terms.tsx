@@ -1,7 +1,10 @@
+"use client";
 import { storyblokEditable } from "@storyblok/react";
+import { render } from "storyblok-rich-text-react-renderer";
 
 export const TravelTerms = ({ blok }: any) => {
   const { heading, subheading, information, mainContent } = blok;
+  console.log("maaain", mainContent.content);
 
   return (
     <div className="travelTermsWrapper" {...storyblokEditable(blok)}>
@@ -15,31 +18,37 @@ export const TravelTerms = ({ blok }: any) => {
       </div>
 
       <div className="travelTermsContent">
-        {mainContent.content.map((element: any) => {
+        {mainContent.content.map((element: any, index: number) => {
           if (element.type === "heading") {
             return (
-              <h2 className="mediumHeading">{element.content[0]?.text}</h2>
+              <h2 key={index} className="mediumHeading">
+                {element.content?.[0]?.text}
+              </h2>
             );
           } else if (
             element.type === "bullet_list" ||
             element.type === "list_item"
           ) {
             return (
-              <ul className="bulletList">
-                {element.content.map((item: any, index: number) => (
-                  <li key={index}>{item.content[0].content[0].text}</li>
+              <ul key={index} className="bulletList">
+                {element.content?.map((item: any, itemIndex: number) => (
+                  <li key={itemIndex}>
+                    {item.content?.[0]?.content?.[0]?.text}
+                  </li>
                 ))}
               </ul>
             );
-          } else if (element.content[0]?.marks?.[0]?.type === "italic") {
+          } else if (element.content?.[0]?.marks?.[0]?.type === "italic") {
             return (
-              <p className="largerParagraph italic">
-                {element.content[0]?.text}
+              <p key={index} className="largerParagraph italic">
+                {element.content?.[0]?.text}
               </p>
             );
           } else {
             return (
-              <p className="largerParagraph">{element.content[0]?.text}</p>
+              <p key={index} className="largerParagraph">
+                {element.content?.[0]?.text}
+              </p>
             );
           }
         })}

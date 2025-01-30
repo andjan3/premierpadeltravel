@@ -7,6 +7,7 @@ import LinkBtn from "./link-btn";
 export const ImageSection = ({ blok }: any) => {
   const { heading, image, link, link_title, content, show_link, styling_left } =
     blok;
+
   return (
     <div
       className={` imgSectionContainer ${styling_left && "imgContainerLeft"}`}
@@ -19,7 +20,10 @@ export const ImageSection = ({ blok }: any) => {
         </div>
         <div className="mt-10">
           {show_link && (
-            <LinkBtn className="button" link={link.cached_url}>
+            <LinkBtn
+              className="button"
+              link={`${link.cached_url.replace(/^\/(da|en)\//, "/")}`}
+            >
               {link_title}
             </LinkBtn>
           )}

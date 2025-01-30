@@ -36,7 +36,7 @@ export default function RootLayout({
         <body className="font-sans">
           <Header lang={process.env.STORYBLOCK_LANG} />
           <main>{children}</main>
-          <Footer />
+          <Footer lang={process.env.STORYBLOCK_LANG} />
         </body>
       </html>
     </StoryblokProvider>

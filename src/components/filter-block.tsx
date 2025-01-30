@@ -47,7 +47,7 @@ export const FilterBlock = ({ blok }: any) => {
             <div className="w-[40%] text-center mt-8 text-[14px] leading-[22px]">
               {render(blok.content)}
             </div>
-          ) : filter === "Flexibla resor" ? (
+          ) : filter === "Flexibla resor" || filter === "Flexible travel" ? (
             <div className="flex flex-col items-center">
               <div className="w-[40%] text-center mt-8 text-[14px] leading-[22px]">
                 {render(blok.third_content)}
