@@ -1,9 +1,11 @@
-export const NewsLetterForm = () => {
+export const NewsLetterForm = ({ lang }: any) => {
+  console.log(lang);
   return (
     <div className="w-full flex justify-center mt-20">
       <form className="bg-[#004E70] w-[60%] h-[30%] p-10 flex flex-col gap-4 rounded ">
         <div className="uppercase text-white text-center">
-          Missa aldrig en nyhet - prenumerera på vårt nyhetsbrev!
+          {lang === "sv" &&
+            " Missa aldrig en nyhet - prenumerera på vårt nyhetsbrev!"}
         </div>
 
         <div className="relative">

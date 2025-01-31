@@ -3,7 +3,7 @@
 import { NewsLetterForm } from "@/app/components/form/news-letter-form";
 import Image from "next/image";
 
-export const LogoBlock = ({ blok }: any) => {
+export const LogoBlock = ({ blok, lang }: any) => {
   const { title, logo_block } = blok;
   return (
     <div className="mt-20">

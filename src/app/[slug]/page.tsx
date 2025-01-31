@@ -32,7 +32,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
   const story = await fetchData(slugName);
   const resor = await getAllResor();
 
-  const lang = process.env.STORYBLOCK_LANG;
+  const lang = process.env.STORYBLOCK_LANG || "en";
   return (
     <StoryblokStory
       story={story.data.data.story}
