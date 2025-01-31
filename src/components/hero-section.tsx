@@ -1,8 +1,11 @@
 import LinkBtn from "@/components/link-btn";
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react/rsc";
 import Image from "next/image";
+import useStore from "./lib/store";
 
 const HeroSection = ({ blok }: any) => {
+  const { lang } = useStore();
+  console.log("laaaaaaang", lang);
   const {
     paragraph1,
     paragraph2,
