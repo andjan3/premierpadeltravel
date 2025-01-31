@@ -84,7 +84,7 @@ export const Packages = ({ paket, blok, resor, lang }: any) => {
               {render(content.package_info)}
             </div>
           </div>
-          <BookingForm />
+          <BookingForm lang={lang} />
         </div>
         {content.gallery.length > 0 && <Gallery images={content.gallery} />}
         <div className="w-[100%] mt-16">
@@ -127,7 +127,7 @@ export const Packages = ({ paket, blok, resor, lang }: any) => {
                 alt={content.video.alt}
               />
             )}
-            <div>
+            <div className="spacing">
               {render(content.content)}
               {content.content_dropdown?.content[0].content?.length > 0 && (
                 <div
@@ -191,7 +191,9 @@ export const Packages = ({ paket, blok, resor, lang }: any) => {
         </div>
         <div
           className={`${
-            content.video_content ? "hidden" : "-mt-16 mb-16 w-[100%]"
+            content.video_content
+              ? "hidden"
+              : "-mt-16 mb-16 w-[100%] additional-content spacing"
           }`}
         >
           {render(content.additional_content)}

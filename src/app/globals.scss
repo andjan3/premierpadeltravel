@@ -86,6 +86,12 @@ td {
   padding: 3rem;
   display: flex;
 }
+
+.additional-content {
+  p {
+    width: 50%;
+  }
+}
 .footerTitle {
   margin-bottom: 1rem;
   font-size: 18px;
@@ -234,6 +240,12 @@ td {
 .mediumHeading {
   font-size: 28px;
   color: #004e70;
+}
+
+.spacing {
+  p {
+    line-height: 1.5rem;
+  }
 }
 
 .largerParagraph {
