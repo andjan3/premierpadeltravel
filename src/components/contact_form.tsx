@@ -1,7 +1,7 @@
 import { StandardForm } from "@/app/components/form/standard-form";
 import useStore from "./lib/store";
 
-export const ContactForm = ({ lang }: any) => {
+export const ContactForm = ({ lang, settings }: any) => {
   const { filter } = useStore();
   return (
     <div
@@ -13,7 +13,7 @@ export const ContactForm = ({ lang }: any) => {
           : "hidden"
       }`}
     >
-      <StandardForm lang={lang} />
+      <StandardForm lang={lang} settings={settings} />
     </div>
   );
 };

@@ -3,22 +3,20 @@ import { useState } from "react";
 import LinkBtn from "../../../components/link-btn";
 import Image from "next/image";
 import { IoMdClose } from "react-icons/io";
-import useStore from "@/components/lib/store";
 
 const HeaderSection = (props: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { lang, setLang } = useStore();
 
   const handleLangChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedLang = e.target.value;
-    setLang(selectedLang);
+    window.location.replace(selectedLang);
   };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const { logo, header_menu, logoLink } = props.props.story.content;
+  const { logo, header_menu, logoLink } = props.props.content;
 
   const firstMenuItems = header_menu.slice(0, 3);
   const secondMenuItems = header_menu.slice(3, 5);
@@ -65,7 +63,10 @@ const HeaderSection = (props: any) => {
                 {
                   <LinkBtn
                     className={"font-bold text-lg headerLink"}
-                    link={`/${element.link?.cached_url || ""}`}
+                    link={`${element.link?.cached_url.replace(
+                      /^\/(da|en)\//,
+                      "/"
+                    )}`}
                     title={element.name}
                   />
                 }
@@ -93,7 +94,10 @@ const HeaderSection = (props: any) => {
               <li key={i}>
                 <LinkBtn
                   className={"font-bold text-lg headerLink"}
-                  link={`/${element.link?.cached_url || ""}`}
+                  link={`${element.link?.cached_url.replace(
+                    /^\/(da|en)\//,
+                    "/"
+                  )}`}
                   title={element.name}
                 />
               </li>
@@ -119,7 +123,10 @@ const HeaderSection = (props: any) => {
                   <li key={i} className={" mb-[20px]"} onClick={toggleMenu}>
                     <LinkBtn
                       className={"font-bold text-lg mb-[20px]"}
-                      link={`/${element.link?.cached_url || ""}`}
+                      link={`${element.link?.cached_url.replace(
+                        /^\/(da|en)\//,
+                        "/"
+                      )}`}
                       title={element.name}
                     />
                   </li>
@@ -128,7 +135,10 @@ const HeaderSection = (props: any) => {
                   <li key={i} className={" mb-[20px]"} onClick={toggleMenu}>
                     <LinkBtn
                       className={"font-bold text-lg"}
-                      link={`/${element.link?.cached_url || ""}`}
+                      link={`${element.link?.cached_url.replace(
+                        /^\/(da|en)\//,
+                        "/"
+                      )}`}
                       title={element.name}
                     />
                   </li>
@@ -142,12 +152,11 @@ const HeaderSection = (props: any) => {
         <select
           name="language"
           id="language-select"
-          value={lang}
           onChange={handleLangChange}
         >
-          <option value="sv">Svenska</option>
-          <option value="da">Danska</option>
-          <option value="en">Engelska</option>
+          <option value="https://premierpadeltravel.se">Svenska</option>
+          <option value="https://premierpadeltravel.dk">Danska</option>
+          <option value="https://premierpadeltravel.com">Engelska</option>
         </select>
       </form>
     </nav>

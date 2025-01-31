@@ -4,7 +4,7 @@ import { StandardForm } from "@/app/components/form/standard-form";
 import useStore from "./lib/store";
 import { render } from "storyblok-rich-text-react-renderer";
 
-export const FilterBlock = ({ blok, lang }: any) => {
+export const FilterBlock = ({ blok, lang, settings }: any) => {
   const { filter, setFilter } = useStore();
 
   const { links } = blok;
@@ -57,7 +57,7 @@ export const FilterBlock = ({ blok, lang }: any) => {
                 {render(blok.third_content)}
               </div>
               <div className="w-full h-[90vh] flex justify-center bg-[#f8f8f8] p-8 mt-20">
-                <StandardForm lang={lang} />
+                <StandardForm lang={lang} settings={settings} />
               </div>
             </div>
           ) : (

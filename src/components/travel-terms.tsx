@@ -1,10 +1,8 @@
 "use client";
 import { storyblokEditable } from "@storyblok/react";
-import { render } from "storyblok-rich-text-react-renderer";
 
 export const TravelTerms = ({ blok }: any) => {
   const { heading, subheading, information, mainContent } = blok;
-  console.log("maaain", mainContent.content);
 
   return (
     <div className="travelTermsWrapper" {...storyblokEditable(blok)}>

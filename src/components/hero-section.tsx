@@ -1,11 +1,8 @@
 import LinkBtn from "@/components/link-btn";
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react/rsc";
 import Image from "next/image";
-import useStore from "./lib/store";
 
 const HeroSection = ({ blok }: any) => {
-  const { lang } = useStore();
-  console.log("laaaaaaang", lang);
   const {
     paragraph1,
     paragraph2,
@@ -41,7 +38,7 @@ const HeroSection = ({ blok }: any) => {
       )}
       <div
         {...storyblokEditable(blok)}
-        className="md:p-0 relative z-10 flex-col flex justify-evenly items-center text-white h-[60%]"
+        className="md:p-0 relative z-10 flex-col flex justify-center items-center text-white h-[80%]"
       >
         {heroImage && (
           <>

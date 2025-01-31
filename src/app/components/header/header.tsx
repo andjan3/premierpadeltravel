@@ -1,17 +1,9 @@
 import HeaderSection from "./header-section";
-
-async function fetchData() {
-  const res = await fetch(
-    `https://api.storyblok.com/v2/cdn/stories/config?version=draft&token=${process.env.STORYBLOK_TOKEN}`,
-    { cache: "no-store" }
-  );
-
-  return res.json();
-}
+import { getData } from "@/app/lib/get-data";
 
 const Header = async ({ lang }: any) => {
-  const story = await fetchData();
-  return <HeaderSection lang={lang} props={story} />;
+  const story = await getData();
+  return <HeaderSection lang={lang} props={story.data.data.story} />;
 };
 
 export default Header;

@@ -1,48 +1,47 @@
-import {
-  Language,
-  translations,
-} from "@/components/lib/interface.lang-standard-form";
-
-export const StandardForm = ({ lang }: { lang: Language }) => {
-  const texts = translations[lang];
-
+export const StandardForm = ({ settings }: any) => {
   return (
     <div className="w-[55%] p-20">
-      <h2 className="text-center">{texts.title}</h2>
-      <form className="mt-10 w-[100%]">
-        <div className="grid grid-cols-2 gap-4">
-          <input type="text" name="" id="" placeholder={texts.name} />
-          <input type="text" name="" id="" placeholder={texts.email} />
-        </div>
-        <div className="grid grid-cols-2 gap-4">
-          <input type="number" name="" id="" placeholder={texts.phone} />
-          <select name="" id="" defaultValue={""}>
-            <option value="" disabled>
-              {texts.choice}
-            </option>
-            <option value="">{texts.private}</option>
-            <option value="">{texts.business}</option>
-          </select>
-        </div>
+      {settings && (
+        <>
+          <h2 className="text-center">{settings.title_flexible_trips}</h2>
 
-        <textarea
-          name=""
-          id=""
-          placeholder={texts.message}
-          className="resize-none h-32"
-        ></textarea>
+          <form className="mt-10 w-[100%]">
+            <div className="grid grid-cols-2 gap-4">
+              <input type="text" name="" id="" placeholder={settings.name} />
+              <input type="text" name="" id="" placeholder={settings.email} />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <input type="number" name="" id="" placeholder={settings.phone} />
+              <select name="" id="" defaultValue={""}>
+                <option value="" disabled>
+                  {settings.select_customer_type}
+                </option>
+                <option value="">{settings.private_person}</option>
+                <option value="">{settings.business}</option>
+              </select>
+            </div>
 
-        <div className="flex items-start gap-4">
-          <input type="checkbox" name="" id="" className="mt-2" />
-          <div>{texts.privacyPolicy}</div>
-        </div>
-        <button
-          className="w-[128px] h-[50px] text-[14px] bg-[#28303d] text-white mt-4"
-          type="submit"
-        >
-          {texts.submit}
-        </button>
-      </form>
+            <textarea
+              name=""
+              id=""
+              placeholder={settings.message}
+              className="resize-none h-32"
+            ></textarea>
+
+            <div className="flex items-start gap-4">
+              <input type="checkbox" name="" id="" className="mt-2" />
+              <div>{settings.policy_text}</div>
+            </div>
+
+            <button
+              className="w-[128px] h-[50px] text-[14px] bg-[#28303d] text-white mt-4"
+              type="submit"
+            >
+              {settings.button}
+            </button>
+          </form>
+        </>
+      )}
     </div>
   );
 };
