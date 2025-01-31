@@ -14,7 +14,7 @@ import useStore from "@/components/lib/store";
 import { DropDown } from "./ui/dropdown";
 import { Tabel } from "./tabel";
 
-export const Packages = ({ paket, blok, resor }: any) => {
+export const Packages = ({ paket, blok, resor, lang }: any) => {
   const { openDropdown, setOpenDropdown, openCalender, setOpenCalender } =
     useStore();
 
@@ -22,6 +22,7 @@ export const Packages = ({ paket, blok, resor }: any) => {
     setOpenDropdown(!state);
   };
 
+  console.log(lang);
   const { content } = paket.data.data.story;
 
   return (
@@ -215,7 +216,7 @@ export const Packages = ({ paket, blok, resor }: any) => {
             <div className="contact">{render(content.contact_content)}</div>
           </div>
         </div>
-        <NewsLetterForm />
+        <NewsLetterForm lang={lang} />
       </div>
     </div>
   );
