@@ -9,8 +9,8 @@ interface IsOpenMenu {
   setFilter: (value: string) => void;
   openCalender: boolean;
   setOpenCalender: (value: boolean) => void;
-  lang: string;
-  setLang: (value: string) => void;
+  /*  lang: string;
+  setLang: (value: string) => void; */
 }
 
 const useStore = create<IsOpenMenu>((set) => ({
@@ -22,8 +22,8 @@ const useStore = create<IsOpenMenu>((set) => ({
   setFilter: (value) => set({ filter: value }),
   openCalender: false,
   setOpenCalender: (value) => set({ openCalender: value }),
-  lang: "sv",
-  setLang: (value) => set({ lang: value }),
+  /*  lang: "sv",
+  setLang: (value) => set({ lang: value }), */
 }));
 
 export default useStore;

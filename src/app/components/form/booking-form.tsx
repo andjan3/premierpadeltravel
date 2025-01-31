@@ -1,105 +1,115 @@
 import useStore from "@/components/lib/store";
-import {
-  Language,
-  translations,
-} from "@/components/lib/interface.lang-booking-form";
 
-export const BookingForm = ({ lang }: { lang: Language }) => {
+export const BookingForm = ({ settings }: any) => {
   const { openCalender } = useStore();
-
-  const texts = translations[lang];
-
+  const {
+    title,
+    subtitle,
+    name,
+    email,
+    phone,
+    button,
+    gender,
+    message,
+    business,
+    people_2,
+    people_4,
+    people_8,
+    people_12,
+    gender_men,
+    gender_female,
+    level_hobby,
+    policy_text,
+    level_amatuer,
+    level_advanced,
+    level_beginner,
+    gender_optional,
+    level_hobby_plus,
+    select_player_level,
+    select_customer_type,
+    select_number_of_people,
+    level_intermediate,
+    private_person,
+    departure,
+    arrival,
+  } = settings;
   return (
     <form>
-      <h2>{texts.bookingRequest}</h2>
-      <div>{texts.contactInfo}</div>
-      <input
-        type="text"
-        name=""
-        id=""
-        placeholder={texts.name}
-        className="w-full"
-      />
+      <h2>{title}</h2>
+
+      <div>{subtitle}</div>
+
+      <input type="text" name="" id="" placeholder={name} className="w-full" />
 
       {openCalender && (
         <div className="grid grid-cols-2 gap-4">
-          <input
-            type="datetime-local"
-            name=""
-            id=""
-            placeholder={texts.departure}
-          />
-          <input
-            type="datetime-local"
-            name=""
-            id=""
-            placeholder={texts.return}
-          />
+          <input type="datetime-local" name="" id="" placeholder={departure} />
+          <input type="datetime-local" name="" id="" placeholder={arrival} />
         </div>
       )}
 
       <div className="grid grid-cols-2 gap-4">
-        <input type="text" name="" id="" placeholder={texts.email} />
-        <input type="number" name="" id="" placeholder={texts.phone} />
+        <input type="text" name="" id="" placeholder={email} />
+        <input type="number" name="" id="" placeholder={phone} />
       </div>
 
       <div className="grid grid-cols-2 gap-4">
         <select name="" id="" defaultValue={""}>
           <option value="" disabled>
-            {texts.customerType}
+            {select_customer_type}
           </option>
-          <option value="privatperson">{texts.private}</option>
-          <option value="foretag">{texts.business}</option>
+          <option value="privatperson">{private_person}</option>
+          <option value="foretag">{business}</option>
         </select>
         <select name="" id="" defaultValue={""}>
           <option value="" disabled>
-            {texts.peopleCount}
+            {select_number_of_people}
           </option>
-          <option value="2">{texts.people2}</option>
-          <option value="4">{texts.people4}</option>
-          <option value="8">{texts.people8}</option>
-          <option value="12">{texts.people12}</option>
+          <option value="2">{people_2}</option>
+          <option value="4">{people_4}</option>
+          <option value="8">{people_8}</option>
+          <option value="12">{people_12}</option>
         </select>
       </div>
 
       <textarea
         name=""
         id=""
-        placeholder={texts.message}
+        placeholder={message}
         className="resize-none"
       ></textarea>
 
       <select name="" id="" defaultValue={""}>
         <option value="" disabled>
-          {texts.playerLevel}
+          {select_player_level}
         </option>
-        <option value="nyborjare">{texts.beginner}</option>
-        <option value="amator">{texts.amateur}</option>
-        <option value="motion">{texts.hobby}</option>
-        <option value="motion-plus">{texts.hobbyPlus}</option>
-        <option value="medel">{texts.intermediate}</option>
-        <option value="anvancerad">{texts.advanced}</option>
+        <option value="nyborjare">{level_beginner}</option>
+        <option value="amator">{level_amatuer}</option>
+        <option value="motion">{level_hobby}</option>
+        <option value="motion-plus">{level_hobby_plus}</option>
+        <option value="medel">{level_intermediate}</option>
+        <option value="anvancerad">{level_advanced}</option>
       </select>
 
       <select name="" id="" defaultValue={""}>
         <option value="" disabled>
-          {texts.gender}
+          {gender}
         </option>
-        <option value="man">{texts.male}</option>
-        <option value="kvinna">{texts.female}</option>
-        <option value="okand">{texts.unknown}</option>
+        <option value="man">{gender_men}</option>
+        <option value="kvinna">{gender_female}</option>
+        <option value="okand">{gender_optional}</option>
       </select>
 
       <div className="flex items-start gap-4">
         <input type="checkbox" name="" id="" className="mt-2" />
-        <div>{texts.privacyPolicy}</div>
+        <div>{policy_text}</div>
       </div>
 
       <button
         className="w-[128px] h-[50px] text-[14px] bg-[#28303d] text-white mt-4"
         type="submit"
       >
-        {texts.submit}
+        {button}
       </button>
     </form>
   );

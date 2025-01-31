@@ -2,7 +2,7 @@ import { TravelReqForm } from "@/app/components/form/travel-request-form";
 import { storyblokEditable } from "@storyblok/react";
 import { render } from "storyblok-rich-text-react-renderer";
 
-export const About = ({ blok, lang }: any) => {
+export const About = ({ blok, lang, settings }: any) => {
   const { Heading, content, styling_left, form } = blok;
 
   return (
@@ -16,7 +16,7 @@ export const About = ({ blok, lang }: any) => {
       <h2 className="ordinaryHeading">{Heading}</h2>
       <div className="paragraph">{render(content)}</div>
 
-      {form && <TravelReqForm lang={lang} />}
+      {form && <TravelReqForm lang={lang} settings={settings} />}
     </div>
   );
 };

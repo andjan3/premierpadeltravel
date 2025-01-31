@@ -1,5 +1,4 @@
-import { Language } from "@/components/lib/interface.lang-booking-form";
-
+type Language = "sv" | "en" | "da";
 export const NewsLetterForm = ({ lang }: any) => {
   const placeholders: Record<Language, string> = {
     sv: "Ange din e-postadress",

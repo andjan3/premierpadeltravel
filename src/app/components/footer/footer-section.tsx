@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const FooterSection = ({ props }: any) => {
   const { Heading, Email, number, companyName, adress, orgNumber } =
-    props.story.content.footerBlocks[0];
+    props.footerBlocks[0];
   const {
     HeadingTerms,
     IntegritetTitle,
@@ -16,10 +16,9 @@ const FooterSection = ({ props }: any) => {
     Resevillkor,
     CookiePolicy,
     CookieTitle,
-  } = props.story.content.footerBlocks[1];
+  } = props.footerBlocks[1];
 
-  const { HeadingFollow, Facebook, Instagram } =
-    props.story.content.footerBlocks[2];
+  const { HeadingFollow, Facebook, Instagram } = props.footerBlocks[2];
 
   return (
     <footer className="footer">
