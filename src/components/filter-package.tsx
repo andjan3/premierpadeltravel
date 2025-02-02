@@ -44,9 +44,9 @@ export const FilterPackage = ({ blok, resor }: any) => {
     <div>
       <div className={`w-[90%] m-auto ${blok.smaller_cards && "mb-24"}`}>
         <h2
-          className={`${blok.smaller_cards && "!-mt-20 text-center mb-16 "} ${
-            filter === "Tournament resor" ? "mt-0" : "mt-16"
-          }`}
+          className={`${
+            blok.smaller_cards && "!-mt-28 lg:!-mt-20 text-center lg:mb-16 "
+          } ${filter === "Tournament resor" ? "mt-0" : "mt-16"}`}
         >
           {(filter === "Tournament resor" &&
             blok.title !== "Premier padel resor") ||
@@ -73,8 +73,8 @@ export const FilterPackage = ({ blok, resor }: any) => {
                       <div
                         className={`relative ${
                           blok.smaller_cards
-                            ? "w-[21.1vw] h-[34vh]"
-                            : "w-[28.6vw] h-[44vh]"
+                            ? "lg:w-[21.1vw] h-[34vh]"
+                            : "lg:w-[28.6vw] h-[44vh]"
                         } overflow-hidden`}
                       >
                         {el.content.future_image.filename !== "" && (

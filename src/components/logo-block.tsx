@@ -9,7 +9,7 @@ export const LogoBlock = ({ blok, lang }: any) => {
     <div className="mt-20">
       <NewsLetterForm lang={lang} />
       <h2 className="text-center mt-20">{title}</h2>
-      <div className="flex justify-center items-center gap-4">
+      <div className="flex justify-center items-center gap-4 px-4 lg:px-0">
         {logo_block.map((el: any) => {
           return (
             <div key={el.img.filename} className="relative w-[250px] h-[140px]">
