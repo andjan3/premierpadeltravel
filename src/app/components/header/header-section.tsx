@@ -24,19 +24,19 @@ const HeaderSection = (props: any) => {
 
   return (
     <nav className="flex  items-center bg-white border-gray-200 px-4">
-      <div className="flex-nowrap flex-row-reverse max-w-screen-xl flex  items-center justify-between mx-auto p-4">
+      <div className="grid grid-cols-3 flex-nowrap lg:flex  items-center justify-between pb-4 pt-4 lg:pt-0 mx-auto gap-10 lg:py-4 justify-self-end justify-items-center lg:w-[100%]">
         {/* Hamburgermeny-knapp */}
         <button
           data-collapse-toggle="navbar-search"
           type="button"
-          className="inline-flex items-center p-2 w-16 h-16 justify-center text-sm rounded-lg md:hidden focus:outline-none  dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          className="inline-flex items-center p-2  h-16 justify-center text-sm rounded-lg md:hidden focus:outline-none order-3 w-auto"
           aria-controls="navbar-search"
           aria-expanded={isMenuOpen ? "true" : "false"}
           onClick={toggleMenu}
         >
           <span className="sr-only">Open main menu</span>
           <svg
-            className="w-[200px]"
+            className="w-[50px]"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -54,7 +54,7 @@ const HeaderSection = (props: any) => {
 
         {/* Menu for larger screens */}
         <div
-          className="flex items-center w-full justify-between md:justify-center lg:gap-[1rem]"
+          className="flex items-center w-full justify-between md:justify-center lg:gap-[1.5rem]"
           id="navbar-default"
         >
           {/* Första menyn */}
@@ -90,7 +90,7 @@ const HeaderSection = (props: any) => {
           </LinkBtn>
 
           {/* Andra menyn */}
-          <ul className="hidden md:flex md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 lg:gap-[1rem]">
+          <ul className="hidden md:flex md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 lg:gap-[1.5rem]">
             {secondMenuItems.map((element: any, i: number) => (
               <li key={i}>
                 <LinkBtn
@@ -148,24 +148,24 @@ const HeaderSection = (props: any) => {
             </div>
           </div>
         </div>
-      </div>
-      <form className="w-[10%]">
-        <div className="relative">
-          <select
-            name="language"
-            id="language-select"
-            onChange={handleLangChange}
-            className="block py-2.5 px-0 w-full text-lg text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
-          >
-            <option value="https://premierpadeltravel.se">Svenska</option>
-            <option value="https://premierpadeltravel.dk">Danska</option>
-            <option value="https://premierpadeltravel.com">Engelska</option>
-          </select>
-          <div className="absolute right-0 top-1/2 transform -translate-y-1/2 pointer-events-none text-2xl">
-            <MdKeyboardArrowDown />
+        <form className="w-[100%] lg:w-[10%] ">
+          <div className="relative">
+            <select
+              name="language"
+              id="language-select"
+              onChange={handleLangChange}
+              className="block py-2.5 px-0 w-full lg:text-lg text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            >
+              <option value="https://premierpadeltravel.se">Svenska</option>
+              <option value="https://premierpadeltravel.dk">Danska</option>
+              <option value="https://premierpadeltravel.com">Engelska</option>
+            </select>
+            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 pointer-events-none lg:text-2xl">
+              <MdKeyboardArrowDown />
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </nav>
   );
 };

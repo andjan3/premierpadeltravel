@@ -56,7 +56,7 @@ const HeroSection = ({ blok }: any) => {
         )}
 
         {!heroImage ? (
-          <h1 className="mt-[5rem] lg:mt-[0rem] text-[45px] md:text-6xl font-bold uppercase text-center z-20 lg:pb-10">
+          <h1 className="lg:mt-[0rem] text-[45px] md:text-6xl font-bold uppercase text-center z-20 lg:pb-10">
             {title}
           </h1>
         ) : (
@@ -65,7 +65,7 @@ const HeroSection = ({ blok }: any) => {
           </h1>
         )}
 
-        <div className="p-[1rem] lg:p-[0rem] text-[16px] md:text-[24px]">
+        <div className="p-[1rem] lg:p-[0rem] text-[16px] md:text-[24px] text-center lg:text-start">
           <p className="mb-2">{paragraph1}</p>
           <p>{paragraph2}</p>
         </div>
