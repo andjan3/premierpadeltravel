@@ -3,6 +3,7 @@ import { useState } from "react";
 import LinkBtn from "../../../components/link-btn";
 import Image from "next/image";
 import { IoMdClose } from "react-icons/io";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 const HeaderSection = (props: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +23,7 @@ const HeaderSection = (props: any) => {
   const secondMenuItems = header_menu.slice(3, 5);
 
   return (
-    <nav className="flex  items-center bg-white border-gray-200">
+    <nav className="flex  items-center bg-white border-gray-200 px-4">
       <div className="flex-nowrap flex-row-reverse max-w-screen-xl flex  items-center justify-between mx-auto p-4">
         {/* Hamburgermeny-knapp */}
         <button
@@ -53,11 +54,11 @@ const HeaderSection = (props: any) => {
 
         {/* Menu for larger screens */}
         <div
-          className="flex items-center w-full justify-between md:justify-center"
+          className="flex items-center w-full justify-between md:justify-center lg:gap-[1rem]"
           id="navbar-default"
         >
           {/* Första menyn */}
-          <ul className="hidden md:flex md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="hidden md:flex md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 lg:gap-[1rem]">
             {firstMenuItems.map((element: any, i: number) => (
               <li key={i}>
                 {
@@ -77,7 +78,7 @@ const HeaderSection = (props: any) => {
           {/* Logotyp */}
 
           <LinkBtn
-            link={`/${logoLink.cached_url || ""}`}
+            link={`/${logoLink.cached_url.replace(/^\/(da|en)\//, "")}`}
             className="flex items-center space-x-3 rtl:space-x-reverse md:pr-8 md:pl-8"
           >
             <Image
@@ -89,7 +90,7 @@ const HeaderSection = (props: any) => {
           </LinkBtn>
 
           {/* Andra menyn */}
-          <ul className="hidden md:flex md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="hidden md:flex md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 lg:gap-[1rem]">
             {secondMenuItems.map((element: any, i: number) => (
               <li key={i}>
                 <LinkBtn
@@ -149,15 +150,21 @@ const HeaderSection = (props: any) => {
         </div>
       </div>
       <form className="w-[10%]">
-        <select
-          name="language"
-          id="language-select"
-          onChange={handleLangChange}
-        >
-          <option value="https://premierpadeltravel.se">Svenska</option>
-          <option value="https://premierpadeltravel.dk">Danska</option>
-          <option value="https://premierpadeltravel.com">Engelska</option>
-        </select>
+        <div className="relative">
+          <select
+            name="language"
+            id="language-select"
+            onChange={handleLangChange}
+            className="block py-2.5 px-0 w-full text-lg text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+          >
+            <option value="https://premierpadeltravel.se">Svenska</option>
+            <option value="https://premierpadeltravel.dk">Danska</option>
+            <option value="https://premierpadeltravel.com">Engelska</option>
+          </select>
+          <div className="absolute right-0 top-1/2 transform -translate-y-1/2 pointer-events-none text-2xl">
+            <MdKeyboardArrowDown />
+          </div>
+        </div>
       </form>
     </nav>
   );
