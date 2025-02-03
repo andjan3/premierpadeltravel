@@ -6,6 +6,7 @@ import { render } from "storyblok-rich-text-react-renderer";
 
 export const FilterBlock = ({ blok, lang, settings }: any) => {
   const { filter, setFilter } = useStore();
+  const { filterId, setFilterId } = useStore();
 
   const { links } = blok;
 
@@ -26,11 +27,17 @@ export const FilterBlock = ({ blok, lang, settings }: any) => {
               <li key={i}>
                 <button
                   className={
-                    filter === `${el.link_title}`
+                    filter.title === `${el.link_title}`
                       ? "font-bold underline decoration-black underline-offset-4"
                       : ""
                   }
-                  onClick={() => setFilter(`${el.link_title}`)}
+                  onClick={() => {
+                    setFilter({
+                      title: `${el.link_title}`,
+                      _uid: `${el._uid}`,
+                    });
+                    setFilterId(`${el._uid}`);
+                  }}
                 >
                   {el.link_title}
                 </button>
@@ -43,15 +50,16 @@ export const FilterBlock = ({ blok, lang, settings }: any) => {
 
       <div className="w-full">
         <div className="flex justify-center">
-          {filter === "Alla resor" ? (
+          {filter.title === "Alla resor" ? (
             <div className="w-[40%] text-center mt-8 text-[14px] leading-[22px]">
               {render(blok.content)}
             </div>
-          ) : filter === "Padel resor" ? (
+          ) : filter.title === "Padel resor" ? (
             <div className="w-[40%] text-center mt-8 text-[14px] leading-[22px]">
               {render(blok.content)}
             </div>
-          ) : filter === "Flexibla resor" || filter === "Flexible travel" ? (
+          ) : filter.title === "Flexibla resor" ||
+            filter.title === "Flexible travel" ? (
             <div className="flex flex-col items-center">
               <div className="w-[40%] text-center mt-8 text-[14px] leading-[22px]">
                 {render(blok.third_content)}

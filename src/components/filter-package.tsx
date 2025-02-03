@@ -6,39 +6,41 @@ import useStore from "./lib/store";
 import Link from "next/link";
 
 export const FilterPackage = ({ blok, resor }: any) => {
-  const { filter } = useStore();
+  const { filter, filterId } = useStore();
 
-  const filteredResor = (() => {
-    switch (filter) {
-      case "Padel resor":
-      case "Padel travel":
-        return resor.filter(
-          (el: any) =>
-            el.content.category.includes("padel-resor") &&
-            (blok.title === "Resmål" ||
-              blok.title === "Destination" ||
-              blok.title === "Bestemmelsessted")
-        );
-      case "Tournament resor":
-      case "Tournament travel":
-      case "Turneringsresort":
-        return resor.filter(
-          (el: any) =>
-            el.content.category.includes("tournament-resor") &&
-            (blok.title === "Premier padel resor" ||
-              blok.title === "Premier padel trips" ||
-              "Premier padel ture")
-        );
-      case "Flexibla resor":
-      case "Flexible travel":
-        return resor.filter((el: any) =>
-          el.content.category.includes("flexibla-resor")
-        );
-      case "Alla resor":
-      default:
-        return resor;
+  console.log("blook", blok);
+  const categories = resor.flatMap((el: any) => el.content.category);
+
+  const filteredResor = () => {
+    if (filter._uid === "cef9cdaf-8c07-4ef0-8bbd-7a16e45bd996") {
+      const result = resor.filter((el: any) =>
+        el.content.category.includes("alla-resor")
+      );
+      return result;
     }
-  })();
+    if (filter._uid === "b95d98bd-8ce3-4068-8b54-99484c13e215") {
+      if (blok._uid === "efd7c811-d965-42cf-b108-318cbbfa0f3d") {
+        const result = resor.filter((el: any) =>
+          el.content.category.includes("padel-resor")
+        );
+        return result;
+      }
+    }
+
+    if (filter._uid === "747f8472-24b1-45cb-8c4b-25dfc5ea9a73") {
+      const result = resor.filter((el: any) =>
+        el.content.category.includes("tournament-resor")
+      );
+      return result;
+    } else {
+      const result = resor.filter((el: any) =>
+        el.content.category.includes("flexibla-resor")
+      );
+      return result;
+    }
+  };
+
+  const filteredResult = filteredResor();
 
   return (
     <div>
@@ -46,22 +48,16 @@ export const FilterPackage = ({ blok, resor }: any) => {
         <h2
           className={`${
             blok.smaller_cards && "!-mt-28 lg:!-mt-20 text-center lg:mb-16 "
-          } ${filter === "Tournament resor" ? "mt-0" : "mt-16"}`}
+          } `}
         >
-          {(filter === "Tournament resor" &&
-            blok.title !== "Premier padel resor") ||
-          (filter === "Padel resor" && blok.title !== "Resmål") ||
-          filter === "Flexibla resor" ||
-          filter === "Turneringsresort"
-            ? null
-            : blok.title}
+          {blok.title}
         </h2>
         <div
           className={`w-[100%] grid grid-cols-1 gap-6 mt-4 ${
             blok.smaller_cards ? "lg:grid-cols-4" : "lg:grid-cols-3"
-          } ${filter === "Padel resor" && "-mb-[2rem]"}`}
+          } `}
         >
-          {filteredResor.map(
+          {filteredResult.map(
             (el: any) =>
               blok.package.includes(el.uuid) && (
                 <Link
