@@ -7,10 +7,9 @@ import About from "./about";
 import { ImageSection } from "./image-section";
 import TravelTerms from "./travel-terms";
 import { LogoBlock } from "./logo-block";
-import { FilterPackage } from "./filter-package";
 import { Tabel } from "./tabel";
-import { FilterBlock } from "./filter-block";
 import { ContactForm } from "./contact_form";
+import { Filter } from "./filter-package";
 
 storyblokInit({
   components: {
@@ -20,10 +19,8 @@ storyblokInit({
     image_section: ImageSection,
     travelTerms: TravelTerms,
     partners: LogoBlock,
-    filter_package: FilterPackage,
+    test_filter: Filter,
     tabel: Tabel,
-    filter_block: FilterBlock,
-    filter_packages: FilterPackage,
     contact_form: ContactForm,
   },
   enableFallbackComponent: true,
