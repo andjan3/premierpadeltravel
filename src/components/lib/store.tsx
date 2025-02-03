@@ -1,16 +1,22 @@
 import { create } from "zustand";
+type Filter = {
+  title: string;
+  _uid: string;
+};
 
 interface IsOpenMenu {
   openDropdown: boolean;
   setOpenDropdown: (value: boolean) => void;
   isProgramDropdownOpen: boolean;
   setProgramDropdownOpen: (value: boolean) => void;
-  filter: string;
-  setFilter: (value: string) => void;
+  filter: Filter;
+  setFilter: (value: Filter) => void;
   openCalender: boolean;
   setOpenCalender: (value: boolean) => void;
   /*  lang: string;
   setLang: (value: string) => void; */
+  filterId: string;
+  setFilterId: (value: string) => void;
 }
 
 const useStore = create<IsOpenMenu>((set) => ({
@@ -18,10 +24,12 @@ const useStore = create<IsOpenMenu>((set) => ({
   setOpenDropdown: (value) => set({ openDropdown: value }),
   isProgramDropdownOpen: false,
   setProgramDropdownOpen: (value) => set({ isProgramDropdownOpen: value }),
-  filter: "Alla resor",
+  filter: { title: "", _uid: "" },
   setFilter: (value) => set({ filter: value }),
   openCalender: false,
   setOpenCalender: (value) => set({ openCalender: value }),
+  filterId: "",
+  setFilterId: (value) => set({ filterId: value }),
   /*  lang: "sv",
   setLang: (value) => set({ lang: value }), */
 }));
