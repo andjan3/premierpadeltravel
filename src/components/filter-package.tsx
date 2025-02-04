@@ -114,7 +114,9 @@ import { render } from "storyblok-rich-text-react-renderer";
 
 import Link from "next/link";
 import { useState } from "react";
-export const Filter = ({ blok, resor }: any) => {
+import { StandardForm } from "@/app/components/form/standard-form";
+import { TravelReqForm } from "@/app/components/form/travel-request-form";
+export const Filter = ({ blok, resor, settings }: any) => {
   const [filter, setFilter] = useState("alla");
   const [filterContent, setFilterContent] = useState("alla");
   const handleFilter = (data: string) => {
@@ -137,42 +139,54 @@ export const Filter = ({ blok, resor }: any) => {
       return el.link_title.includes(filterContent);
     }
   });
-  console.log(filterContent);
+
+  const filteredForm = blok.filter_links.filter((el: any) => {
+    if (el.display_form || filter === "alla") {
+      return el.link_title.includes(filterContent);
+    } else {
+      return null;
+    }
+  });
+
+  console.log(blok);
   return (
     <div className="mt-20">
       <h2 className="text-center text-[36px] font-bold mb-10 ">{blok.title}</h2>
-      <div className="flex justify-center gap-4">
-        <button
-          className={
-            filter === "alla"
-              ? "font-bold underline decoration-black underline-offset-4"
-              : ""
-          }
-          onClick={() => handleFilter("alla")}
-        >
-          Alla resor
-        </button>
-        <div>|</div>
-        {blok.filter_links.map(
-          (el: any) =>
-            el.title && (
-              <>
-                <button
-                  key={el.link_title}
-                  onClick={() => handleFilter(el.link_title)}
-                  className={
-                    filter === `${el.link_title}`
-                      ? "font-bold underline decoration-black underline-offset-4"
-                      : ""
-                  }
-                >
-                  {el.title}
-                </button>
-                <div>|</div>
-              </>
-            )
-        )}
-      </div>
+      {blok.show_filter && (
+        <div className="flex justify-center gap-4">
+          <button
+            className={
+              filter === "alla"
+                ? "font-bold underline decoration-black underline-offset-4"
+                : ""
+            }
+            onClick={() => handleFilter("alla")}
+          >
+            Alla resor
+          </button>
+          <div>|</div>
+
+          {blok.filter_links.map(
+            (el: any) =>
+              el.title && (
+                <>
+                  <button
+                    key={el.link_title}
+                    onClick={() => handleFilter(el.link_title)}
+                    className={
+                      filter === `${el.link_title}`
+                        ? "font-bold underline decoration-black underline-offset-4"
+                        : ""
+                    }
+                  >
+                    {el.title}
+                  </button>
+                  <div>|</div>
+                </>
+              )
+          )}
+        </div>
+      )}
       <div className="w-[100%] flex justify-center text-center mt-8 text-[14px] leading-[22px]">
         {filteredContent.map((el: any) => {
           return <div className="w-[40%]">{el.content}</div>;
@@ -181,7 +195,7 @@ export const Filter = ({ blok, resor }: any) => {
       <div>
         {filteredTitles.map((el: any) => {
           return (
-            <div key={el.section_title}>
+            <div key={el.section_title} className="mb-20">
               <div className="w-[90%] mx-auto">
                 <h2>{el.section_title}</h2>
               </div>
@@ -246,6 +260,13 @@ export const Filter = ({ blok, resor }: any) => {
           );
         })}
       </div>
+      {filteredForm.map((el: any) => {
+        return (
+          <div className="flex justify-center mb-20">
+            <StandardForm settings={settings} />
+          </div>
+        );
+      })}
     </div>
   );
 };
