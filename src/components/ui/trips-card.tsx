@@ -3,6 +3,7 @@ import Link from "next/link";
 import { render } from "storyblok-rich-text-react-renderer";
 
 export const TripsCard = ({ item, boolean }: any) => {
+  console.log("iteeeeem helluu", item);
   return (
     <>
       <Link
@@ -16,6 +17,11 @@ export const TripsCard = ({ item, boolean }: any) => {
                 boolean ? " h-[34vh]" : "lg:w-[28.6vw] h-[44vh]"
               } overflow-hidden`}
             >
+              {item.content.show_overlay_text && !boolean && (
+                <div className="relative top-[10%] right-[7%] z-10 bg-[linear-gradient(220deg,_#f15c22_14%,_#f15c22_30%,_#e95326_50%,_#d33b30_82%,_#c33_91%)] w-[10vw] h-[4vh] -rotate-[45deg] text-white flex items-center justify-center uppercase text-[10px]">
+                  {item.content.overlay_text}
+                </div>
+              )}
               {item.content.future_image.filename !== "" && (
                 <Image
                   src={item.content.future_image.filename}

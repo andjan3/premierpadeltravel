@@ -39,7 +39,7 @@ export const Filter = ({ blok, resor, settings }: any) => {
   });
 
   return (
-    <div className="mt-20">
+    <div className={`${blok.smaller_cards ? "lg:mt-14" : "lg:mt-20"}`}>
       <h2 className="text-center text-[36px] font-bold mb-10 ">{blok.title}</h2>
       {blok.show_filter && (
         <div className="flex justify-center gap-4">

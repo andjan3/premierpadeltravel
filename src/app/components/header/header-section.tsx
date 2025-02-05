@@ -58,7 +58,7 @@ const HeaderSection = (props: any) => {
           id="navbar-default"
         >
           {/* Första menyn */}
-          <ul className="hidden md:flex md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 lg:gap-[1rem]">
+          <ul className="hidden md:flex md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white lg:gap-[1rem]">
             {firstMenuItems.map((element: any, i: number) => (
               <li key={i}>
                 {
@@ -90,7 +90,7 @@ const HeaderSection = (props: any) => {
           </LinkBtn>
 
           {/* Andra menyn */}
-          <ul className="hidden md:flex md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 lg:gap-[1.5rem]">
+          <ul className="hidden md:flex md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white lg:gap-[1.5rem]">
             {secondMenuItems.map((element: any, i: number) => (
               <li key={i}>
                 <LinkBtn
@@ -154,7 +154,7 @@ const HeaderSection = (props: any) => {
               name="language"
               id="language-select"
               onChange={handleLangChange}
-              className="block py-2.5 px-0 w-full lg:text-lg text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+              className="block py-2.5 px-0 w-full lg:text-lg text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer"
             >
               <option value="https://premierpadeltravel.se">Svenska</option>
               <option value="https://premierpadeltravel.dk">Danska</option>
