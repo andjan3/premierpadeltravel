@@ -16,7 +16,7 @@ const HeroSection = ({ blok }: any) => {
   return (
     <div
       className={`w-full bg-cover bg-center relative ${
-        heroImage ? "" : "h-screen"
+        heroImage ? "" : "h-[80vh]"
       }`}
       style={{
         background:
@@ -28,7 +28,7 @@ const HeroSection = ({ blok }: any) => {
           autoPlay
           muted
           loop
-          className="absolute top-0 left-0 w-full object-cover h-[80%]"
+          className="absolute top-0 left-0 w-full object-cover h-[80vh]"
         >
           <source
             src="https://premierpadeltravel.se/wp-content/uploads/2024/03/PPT-utan-logga.mp4"
@@ -38,21 +38,19 @@ const HeroSection = ({ blok }: any) => {
       )}
       <div
         {...storyblokEditable(blok)}
-        className="md:p-0 relative z-10 flex-col flex justify-center items-center text-white h-[80%]"
+        className="md:p-0 relative z-10 flex-col flex justify-center items-center text-white h-[100%]"
       >
         {heroImage && (
-          <>
-            <div className="h-[50vh] lg:h-[40vh] lg:w-full">
-              <Image
-                alt={image.name}
-                layout="fill"
-                fill
-                objectFit="cover"
-                objectPosition="left top"
-                src={image.filename}
-              />
-            </div>
-          </>
+          <div className="h-[50vh] lg:h-[40vh] lg:w-full">
+            <Image
+              alt={image.name}
+              layout="fill"
+              fill
+              objectFit="cover"
+              objectPosition="left top"
+              src={image.filename}
+            />
+          </div>
         )}
 
         {!heroImage ? (

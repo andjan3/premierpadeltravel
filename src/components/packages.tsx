@@ -141,7 +141,7 @@ export const Packages = ({ paket, blok, resor, lang, settings }: any) => {
                   className="flex items-center text-[14px] mt-4 cursor-pointer"
                   onClick={() => handleDropdown(openDropdown)}
                 >
-                  {openDropdown ? text : text2}
+                  {openDropdown ? text2 : text}
                   <IoIosArrowDown
                     fontSize={20}
                     className={`pt-1 ml-2 ${openDropdown && "rotate-180"}`}
