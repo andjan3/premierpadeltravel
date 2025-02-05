@@ -7,14 +7,22 @@ import { CiCalendarDate } from "react-icons/ci";
 import { CiLocationOn } from "react-icons/ci";
 import { IoTicketOutline } from "react-icons/io5";
 import { BookingForm } from "@/app/components/form/booking-form";
-import { Card } from "@/components/card";
 import { NewsLetterForm } from "@/app/components/form/news-letter-form";
 import { IoIosArrowDown } from "react-icons/io";
 import useStore from "@/components/lib/store";
 import { DropDown } from "./ui/dropdown";
 import { Tabel } from "./tabel";
+import { TripsCard } from "./ui/trips-card";
+import { Card } from "./card";
 
 export const Packages = ({ paket, blok, resor, lang, settings }: any) => {
+  const text =
+    lang === "sv" ? "Läs mer" : lang === "en" ? "Read more" : "Læs mere";
+
+  const text2 =
+    lang === "sv" ? "Läs mindre" : lang === "en" ? "Read less" : "Læs mindre";
+  console.log(text);
+
   const { openDropdown, setOpenDropdown, openCalender, setOpenCalender } =
     useStore();
 
@@ -133,7 +141,7 @@ export const Packages = ({ paket, blok, resor, lang, settings }: any) => {
                   className="flex items-center text-[14px] mt-4 cursor-pointer"
                   onClick={() => handleDropdown(openDropdown)}
                 >
-                  Läs mer{" "}
+                  {openDropdown ? text : text2}
                   <IoIosArrowDown
                     fontSize={20}
                     className={`pt-1 ml-2 ${openDropdown && "rotate-180"}`}
@@ -200,7 +208,7 @@ export const Packages = ({ paket, blok, resor, lang, settings }: any) => {
         {content.tabel_heading !== "" && (
           <div>
             <h2 className="pb-4">{content.tabel_heading}</h2>
-            <Tabel content={content.tabel} />
+            <Tabel content={content.tabel} lang={lang} />
           </div>
         )}
         {content.program_dropdown && <DropDown content={content} />}
@@ -208,7 +216,18 @@ export const Packages = ({ paket, blok, resor, lang, settings }: any) => {
           <h2>{content.card_title}</h2>
           {content.card && <Card content={content.card} />}
         </div>
-
+        <div>
+          <h2 className="pb-4">{settings.travel_title}</h2>
+          <div className="grid grid-cols-4 gap-4">
+            {resor
+              .filter((item: any) =>
+                item.content.category.includes("populara-resor")
+              )
+              .map((item: any) => (
+                <TripsCard item={item} boolean={true} />
+              ))}
+          </div>
+        </div>
         <div className="flex flex-col gap-4">
           <div>
             <h2 className="text-center">{content.contact_title}</h2>
