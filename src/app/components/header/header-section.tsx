@@ -64,9 +64,9 @@ const HeaderSection = (props: any) => {
                 {
                   <LinkBtn
                     className={"font-bold text-lg headerLink"}
-                    link={`${element.link?.cached_url.replace(
+                    link={`/${element.link?.cached_url.replace(
                       /^\/(da|en)\//,
-                      "/"
+                      ""
                     )}`}
                     title={element.name}
                   />
@@ -95,9 +95,9 @@ const HeaderSection = (props: any) => {
               <li key={i}>
                 <LinkBtn
                   className={"font-bold text-lg headerLink"}
-                  link={`${element.link?.cached_url.replace(
+                  link={`/${element.link?.cached_url.replace(
                     /^\/(da|en)\//,
-                    "/"
+                    ""
                   )}`}
                   title={element.name}
                 />
