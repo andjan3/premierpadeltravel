@@ -17,7 +17,7 @@ export const Tabel = ({ content, lang }: any) => {
   };
 
   return (
-    <div className={`${content.length > 0 ? "visible" : "invisible"}`}>
+    <div className={`${content.length > 0 ? "visible mb-10" : "invisible"}`}>
       <table>
         <tbody>
           {content?.map((row: any, index: number) => (
@@ -34,7 +34,7 @@ export const Tabel = ({ content, lang }: any) => {
         </tbody>
       </table>
       <div
-        className="flex justify-end items-center cursor-pointer pt-4"
+        className="flex items-center cursor-pointer pt-4"
         onClick={handleOpen}
       >
         {isOpen ? text : text2}

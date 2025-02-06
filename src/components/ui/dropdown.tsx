@@ -12,9 +12,9 @@ export const DropDown = ({ content }: any) => {
     setProgramDropdownOpen(!state);
   };
   return (
-    <div className="w-full">
+    <div className={`w-full ${isProgramDropdownOpen ? "h-full" : "h-[10vh]"}`}>
       <div
-        className="flex cursor-pointer"
+        className="flex cursor-pointer mb-10"
         onClick={() => handleProgramDropdown(isProgramDropdownOpen)}
       >
         <h2>{program_title}</h2>

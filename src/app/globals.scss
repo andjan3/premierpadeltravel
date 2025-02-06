@@ -90,6 +90,13 @@ td {
 .additional-content {
   p {
     width: 50%;
+    margin-top: 1rem;
+  }
+}
+.add-content {
+  p {
+    margin-top: 1rem;
+    width: 100%;
   }
 }
 .footerTitle {
@@ -117,6 +124,7 @@ td {
 }
 .contact {
   font-size: 14px;
+  text-align: center;
   a {
     color: #f26627;
   }
@@ -363,7 +371,7 @@ td {
       li {
         position: relative;
         list-style-type: none;
-        padding-left: 50px;
+        padding-left: 30px;
         margin-bottom: 20px;
 
         &::before {
@@ -373,7 +381,8 @@ td {
           top: 0;
           background-color: #004e70;
           color: white;
-          padding: 2px 7px;
+          font-size: 10px;
+          padding: 2px 6px;
           border-radius: 100%;
         }
       }
@@ -396,7 +405,8 @@ td {
           top: 0;
           background-color: #004e70;
           color: white;
-          padding: 1px 5px;
+          font-size: 10px;
+          padding: 0.1px 6px;
           border-radius: 100%;
         }
       }
@@ -404,6 +414,12 @@ td {
   }
 }
 
+.image-styling {
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+}
 @media screen and (min-width: 1000px) {
   .footerWrapper {
     padding: 5rem;

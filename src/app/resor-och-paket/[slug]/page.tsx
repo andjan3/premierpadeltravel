@@ -18,6 +18,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
         resor={resor.data.data.stories}
         blok={resor.data.data.stories}
         settings={settings.data.data.story.content}
+        pathname={pathname}
       />
     </div>
   );
