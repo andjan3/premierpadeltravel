@@ -15,13 +15,12 @@ import { Tabel } from "./tabel";
 import { TripsCard } from "./ui/trips-card";
 import { Card } from "./card";
 
-export const Packages = ({ paket, blok, resor, lang, settings }: any) => {
+export const Packages = ({ paket, pathname, resor, lang, settings }: any) => {
   const text =
     lang === "sv" ? "Läs mer" : lang === "en" ? "Read more" : "Læs mere";
 
   const text2 =
     lang === "sv" ? "Läs mindre" : lang === "en" ? "Read less" : "Læs mindre";
-  console.log(text);
 
   const { openDropdown, setOpenDropdown, openCalender, setOpenCalender } =
     useStore();
@@ -31,6 +30,8 @@ export const Packages = ({ paket, blok, resor, lang, settings }: any) => {
   };
 
   const { content } = paket.data.data.story;
+
+  console.log("heeej", pathname);
 
   return (
     <div>
@@ -48,7 +49,7 @@ export const Packages = ({ paket, blok, resor, lang, settings }: any) => {
         </p>
       </div>
 
-      <div className="package-container flex flex-col w-[85%] items-center      m-auto gap-10">
+      <div className="package-container flex flex-col w-[85%]     m-auto">
         <div className="grid grid-cols-2 gap-32 w-[100%]  p-4 mt-14 mb-6">
           <div className="flex flex-col gap-4">
             <h2>{content.heading}</h2>
@@ -95,7 +96,7 @@ export const Packages = ({ paket, blok, resor, lang, settings }: any) => {
         </div>
         {content.gallery.length > 0 && <Gallery images={content.gallery} />}
         <div className="w-[100%] mt-16">
-          <h2 className="text-start">{content.second_heading}</h2>{" "}
+          <h2 className="text-start pb-4">{content.second_heading}</h2>{" "}
         </div>
         <div
           className={`
@@ -104,7 +105,7 @@ export const Packages = ({ paket, blok, resor, lang, settings }: any) => {
               ? "flex flex-col gap-6"
               : "flex flex-row flex-wrap"
           }
-          ${content.second_video.filename != "" ? "gap-4" : "gap-10"}
+          ${content.second_video.filename != "" ? "gap-4" : ""}
         `}
         >
           <div
@@ -113,11 +114,11 @@ export const Packages = ({ paket, blok, resor, lang, settings }: any) => {
               "h-full w-full flex justify-center bg-[#f8f8f8] gap-8 py-10 px-8"
             } ${
               content.image_styling &&
-              " flex gap-8 bg-[#f8f8f8] items-center py-10 px-8 mb-10"
+              "image-styling flex gap-8 bg-[#f8f8f8] items-center py-10 px-8 mb-10"
             } ${
               !content.image_styling
                 ? "mb-16 w-[41.3vw] h-[55vh]"
-                : "grid grid-cols-2  w-auto"
+                : "grid grid-cols-2  w-auto h-[80vh] relative"
             }`}
           >
             {content.video_content ? (
@@ -125,20 +126,21 @@ export const Packages = ({ paket, blok, resor, lang, settings }: any) => {
                 <source src={content.video.filename} type="video/mp4" />
               </video>
             ) : (
-              <Image
-                src={content.video.filename}
-                width={content.image_styling ? 700 : undefined}
-                height={content.image_styling ? 700 : undefined}
-                layout={content.image_styling ? "intrinsic" : "fill"}
-                className="object-cover"
-                alt={content.video.alt}
-              />
+              <div className="relative w-[100%] h-[100%]">
+                <Image
+                  src={content.video.filename}
+                  layout={content.image_styling ? "fill" : "fill"}
+                  className="object-cover"
+                  alt={content.video.alt}
+                />
+              </div>
             )}
+
             <div className="spacing">
               {render(content.content)}
               {content.content_dropdown?.content[0].content?.length > 0 && (
                 <div
-                  className="flex items-center text-[14px] mt-4 cursor-pointer"
+                  className="flex items-center text-[14px] cursor-pointer"
                   onClick={() => handleDropdown(openDropdown)}
                 >
                   {openDropdown ? text2 : text}
@@ -182,14 +184,20 @@ export const Packages = ({ paket, blok, resor, lang, settings }: any) => {
             )}
             <div className="flex flex-col items-center gap-4 mb-4 w-[100%]">
               <div>
-                <h2>{content.additional_heading}</h2>
+                <h2 className="pb-4">{content.additional_heading}</h2>
               </div>
               <div
                 className={` ${
                   content.second_video.filename != "" ? "w-[100%]" : "w-[80%]"
                 }`}
               >
-                <div className={`${!content.video_content && "hidden"}`}>
+                <div
+                  className={`${!content.video_content && "hidden"}  ${
+                    pathname === "paket-2" || pathname === "paket-8"
+                      ? "additional-content"
+                      : "add-content"
+                  }`}
+                >
                   {render(content.additional_content)}
                 </div>
               </div>
@@ -198,9 +206,13 @@ export const Packages = ({ paket, blok, resor, lang, settings }: any) => {
         </div>
         <div
           className={`${
-            content.video_content
+            content.video_content || content.additional_content > 0
               ? "hidden"
-              : "-mt-16 mb-16 w-[100%] additional-content spacing"
+              : "-mt-16 mb-10 w-[100%]  spacing"
+          }  ${
+            pathname === "paket-6" || pathname === "paket-7"
+              ? "additional-content"
+              : "add-content"
           }`}
         >
           {render(content.additional_content)}
@@ -214,7 +226,7 @@ export const Packages = ({ paket, blok, resor, lang, settings }: any) => {
         {content.program_dropdown && <DropDown content={content} />}
         <div className="flex flex-col gap-4">
           <h2>{content.card_title}</h2>
-          {content.card && <Card content={content.card} />}
+          {content.card && <Card content={content.card} lang={lang} />}
         </div>
         <div>
           <h2 className="pb-4">{settings.travel_title}</h2>
@@ -228,7 +240,7 @@ export const Packages = ({ paket, blok, resor, lang, settings }: any) => {
               ))}
           </div>
         </div>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 mt-16">
           <div>
             <h2 className="text-center">{content.contact_title}</h2>
           </div>

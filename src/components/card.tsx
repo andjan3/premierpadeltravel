@@ -2,8 +2,24 @@
 
 import Image from "next/image";
 import { render } from "storyblok-rich-text-react-renderer";
+import { IoIosArrowDown } from "react-icons/io";
+import { useState } from "react";
 
-export const Card = ({ content }: any) => {
+export const Card = ({ content, lang }: any) => {
+  const text =
+    lang === "sv" ? "Läs mer" : lang === "en" ? "Read more" : "Læs mere";
+  const text2 =
+    lang === "sv" ? "Läs mindre" : lang === "en" ? "Read less" : "Læs mindre";
+
+  const [openStates, setOpenStates] = useState<{ [key: string]: boolean }>({});
+
+  const handleOpen = (index: number) => {
+    setOpenStates((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index],
+    }));
+  };
+
   return (
     <div
       className={`${
@@ -12,11 +28,16 @@ export const Card = ({ content }: any) => {
           : "invisible"
       }`}
     >
-      {content.map((el: any) => {
+      {content.map((el: any, index: number) => {
         const hasBulletList = el.content?.content?.[0]?.type === "bullet_list";
 
         return (
-          <div className="flex flex-row gap-4 bg-white rounded shadow-lg h-[44vh]">
+          <div
+            key={el.title}
+            className={`flex flex-row gap-4 bg-white rounded shadow-lg ${
+              openStates[index] ? "h-[65vh]" : "h-[48vh]"
+            }`}
+          >
             <div className="w-[50%]">
               <Image
                 src={el.img.filename}
@@ -27,13 +48,13 @@ export const Card = ({ content }: any) => {
               />
             </div>
             <div
-              className={` flex flex-col gap-2 p-4 w-[50%] ${
+              className={`flex flex-col gap-2 p-4 w-[50%] ${
                 !hasBulletList && "items-center justify-center"
               }`}
             >
               <h3
                 className={`${
-                  hasBulletList ? "text-xl font-semibold" : "text-[38px]"
+                  hasBulletList ? "text-xl font-semibold" : "text-[30px]"
                 }`}
               >
                 {el.title}
@@ -42,6 +63,34 @@ export const Card = ({ content }: any) => {
               <h4 className="text-lg font-light">{el.price}</h4>
               <div className="card-content text-sm text-gray-700">
                 {render(el.content)}
+
+                {el.second_content?.content[0].content?.length > 0 && (
+                  <>
+                    <div
+                      className="text-[14px] cursor-pointer"
+                      onClick={() => handleOpen(index)}
+                    >
+                      {el.second_content && (
+                        <div
+                          className={`${
+                            openStates[index] ? "-mt-4" : "hidden"
+                          }`}
+                        >
+                          {render(el.second_content)}
+                        </div>
+                      )}
+                      <div className="flex items-end mt-6">
+                        {openStates[index] ? text2 : text}
+                        <IoIosArrowDown
+                          fontSize={20}
+                          className={`pt-1 ml-2 ${
+                            openStates[index] && "rotate-180"
+                          }`}
+                        />
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const Gallery = ({ images }: any) => {
   return (
-    <div className="flex justify-center  mr-auto">
+    <div className="flex justify-center mt-16 mr-auto">
       <div className="grid grid-cols-4 gap-4 max-w-[100%]">
         {images.map((el: any, index: number) => {
           return (
