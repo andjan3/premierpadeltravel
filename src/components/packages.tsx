@@ -31,7 +31,6 @@ export const Packages = ({ paket, pathname, resor, lang, settings }: any) => {
   };
 
   const { content } = paket.data.data.story;
-  console.log(content);
 
   return (
     <div>

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { render } from "storyblok-rich-text-react-renderer";
 
 export const TripsCard = ({ item, boolean }: any) => {
-  console.log("iteeeeem helluu", item);
   return (
     <>
       <Link
