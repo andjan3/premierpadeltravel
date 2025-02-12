@@ -32,7 +32,7 @@ export const TripsCard = ({ item, boolean }: any) => {
               )}
             </div>
 
-            <div className="p-4 min-h-[340px] mt-2 flex flex-col gap-2">
+            <div className="p-4 min-h-[370px] mt-2 flex flex-col gap-2">
               <div className="text-[#004e70] text-[11px] font-bold !text-center">
                 {item.content.position}
               </div>

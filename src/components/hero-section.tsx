@@ -30,10 +30,7 @@ const HeroSection = ({ blok }: any) => {
           loop
           className="absolute top-0 left-0 w-full object-cover h-[80vh]"
         >
-          <source
-            src="https://premierpadeltravel.se/wp-content/uploads/2024/03/PPT-utan-logga.mp4"
-            type="video/mp4"
-          />
+          <source src={image.filename} type="video/mp4" />
         </video>
       )}
       <div
