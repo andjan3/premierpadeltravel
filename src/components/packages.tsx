@@ -14,6 +14,7 @@ import { DropDown } from "./ui/dropdown";
 import { Tabel } from "./tabel";
 import { TripsCard } from "./ui/trips-card";
 import { Card } from "./card";
+import { InfoBlock } from "./info-block";
 
 export const Packages = ({ paket, pathname, resor, lang, settings }: any) => {
   const text =
@@ -30,8 +31,7 @@ export const Packages = ({ paket, pathname, resor, lang, settings }: any) => {
   };
 
   const { content } = paket.data.data.story;
-
-  console.log("heeej", pathname);
+  console.log(content);
 
   return (
     <div>
@@ -94,7 +94,10 @@ export const Packages = ({ paket, pathname, resor, lang, settings }: any) => {
           </div>
           <BookingForm lang={lang} settings={settings} />
         </div>
-        {content.gallery.length > 0 && <Gallery images={content.gallery} />}
+
+        <InfoBlock paket={content.info_block} />
+
+        {/*  {content.gallery.length > 0 && <Gallery images={content.gallery} />}
         <div className="w-[100%] mt-16">
           <h2 className="text-start pb-4">{content.second_heading}</h2>{" "}
         </div>
@@ -239,7 +242,7 @@ export const Packages = ({ paket, pathname, resor, lang, settings }: any) => {
                 <TripsCard item={item} boolean={true} />
               ))}
           </div>
-        </div>
+        </div> */}
         <div className="flex flex-col gap-4 mt-16">
           <div>
             <h2 className="text-center">{content.contact_title}</h2>
