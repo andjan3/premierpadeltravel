@@ -4,9 +4,11 @@ import Image from "next/image";
 import { render } from "storyblok-rich-text-react-renderer";
 import { IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
+import useStore from "./lib/store";
 
 export const Card = ({ content }: any) => {
   const [openStates, setOpenStates] = useState<{ [key: string]: boolean }>({});
+  const { open } = useStore();
 
   const handleOpen = (index: number) => {
     setOpenStates((prevState) => ({
@@ -16,12 +18,12 @@ export const Card = ({ content }: any) => {
   };
 
   return (
-    <div>
+    <div className={`${content.card ? "block lg:-mb-16" : "hidden"}`}>
       <div className="lg:w-[50%]">{render(content.content)}</div>
       <div
         className={`${
           content.card?.length > 0
-            ? "grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16"
+            ? "grid grid-cols-1 lg:grid-cols-2 gap-10 mb-8"
             : "invisible"
         }`}
       >
@@ -33,7 +35,7 @@ export const Card = ({ content }: any) => {
             <div
               key={el.title}
               className={`lg:flex flex-row gap-4 bg-white rounded shadow-lg ${
-                openStates[index] ? "lg:h-[65vh]" : "lg:h-[48vh]"
+                openStates[index] ? "lg:h-[65vh]" : "lg:h-[52vh]"
               }`}
             >
               <div className="lg:w-[50%]">

@@ -86,7 +86,14 @@ export const Filter = ({ blok, resor, settings }: any) => {
       <div>
         {filteredTitles.map((el: any) => {
           return (
-            <div key={el.section_title} className="mb-10 lg:mb-20">
+            <div
+              key={el.section_title}
+              className={`${
+                el.section_title == ""
+                  ? "invisible"
+                  : "card-container visible mb-10 lg:mb-20"
+              }`}
+            >
               <div className="w-[90%] mx-auto">
                 <h2>{el.section_title}</h2>
               </div>
@@ -116,7 +123,7 @@ export const Filter = ({ blok, resor, settings }: any) => {
       </div>
       {filteredForm.map((el: any) => {
         return (
-          <div className="flex justify-center mb-20">
+          <div className="flex justify-center mb-20 lg:mb-0 lg:mt-10">
             <StandardForm settings={settings} />
           </div>
         );

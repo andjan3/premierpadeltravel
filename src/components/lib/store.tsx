@@ -5,6 +5,8 @@ type Filter = {
 };
 
 interface IsOpenMenu {
+  open: string;
+  setOpen: (value: string) => void;
   openDropdown: boolean;
   setOpenDropdown: (value: boolean) => void;
   isProgramDropdownOpen: boolean;
@@ -13,13 +15,13 @@ interface IsOpenMenu {
   setFilter: (value: Filter) => void;
   openCalender: boolean;
   setOpenCalender: (value: boolean) => void;
-  /*  lang: string;
-  setLang: (value: string) => void; */
   filterId: string;
   setFilterId: (value: string) => void;
 }
 
 const useStore = create<IsOpenMenu>((set) => ({
+  open: "",
+  setOpen: (value) => set({ open: value }),
   openDropdown: false,
   setOpenDropdown: (value) => set({ openDropdown: value }),
   isProgramDropdownOpen: false,
@@ -30,8 +32,6 @@ const useStore = create<IsOpenMenu>((set) => ({
   setOpenCalender: (value) => set({ openCalender: value }),
   filterId: "",
   setFilterId: (value) => set({ filterId: value }),
-  /*  lang: "sv",
-  setLang: (value) => set({ lang: value }), */
 }));
 
 export default useStore;

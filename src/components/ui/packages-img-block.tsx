@@ -13,7 +13,9 @@ export const PackageImageBlock = ({ el }: any) => {
 
   return (
     <>
-      <div className={`${"image" in el ? "flex  gap-6" : "hidden"}`}>
+      <div
+        className={`${"image" in el && el.image ? "flex  gap-6" : "hidden"}`}
+      >
         <div className="lg:flex  justify-center items-center gap-6">
           {el.video ? (
             <video controls className="w-[50%] h-full object-cover">
@@ -60,7 +62,7 @@ export const PackageImageBlock = ({ el }: any) => {
         <div
           className={`flex  flex-row items-center gap-6 ${
             el.image_right &&
-            "flex-row-reverse justify-center -mt-[1.5rem] -mb-[1.5rem] ml-[0.6rem]"
+            "flex-row-reverse justify-center -mt-[2rem] -mb-[2rem] ml-[0.6rem]"
           }`}
         >
           {el.video ? (
