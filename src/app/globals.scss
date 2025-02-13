@@ -12,7 +12,7 @@
 }
 
 h2 {
-  font-size: 26px;
+  font-size: 20px;
   color: #004e70;
   text-transform: uppercase;
 }
@@ -77,7 +77,6 @@ td {
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  margin-top: 3rem;
 }
 
 .footerWrapper {
@@ -203,6 +202,7 @@ td {
   font-size: 14px;
   p {
     line-height: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   a {
@@ -214,10 +214,9 @@ td {
 
 .citat {
   p {
-    font-size: 25px;
+    font-size: 16px;
     text-align: center;
-    margin-right: 8rem;
-    max-width: 250px;
+    margin-top: 1.5rem;
   }
 }
 .wrapper {
@@ -226,7 +225,7 @@ td {
   justify-content: center;
   padding: 1rem;
   margin-top: 3rem;
-  margin-bottom: 3rem;
+
   p {
     text-align: center;
   }
@@ -235,7 +234,9 @@ td {
 .wrapper-left {
   align-items: flex-start;
   background-color: #f8f8f8;
-  padding: 4rem;
+  padding: 1rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 
   .heading {
     font-size: 18px;
@@ -244,13 +245,14 @@ td {
 .imgSectionContainer {
   display: flex;
   flex-direction: column-reverse;
-  gap: 1rem;
 }
 
 .imgSectionWrapper {
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
   justify-content: center;
 }
 
@@ -258,9 +260,10 @@ td {
   font-size: 4rem;
 }
 .ordinaryHeading {
-  font-size: 30px;
+  font-size: 26px;
   color: #004e70;
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 .smallHeading {
   font-size: 18px;
@@ -310,8 +313,6 @@ td {
 }
 
 .imgContainerLeft {
-  margin-top: 1rem;
-  margin-bottom: 2rem;
   background-color: #f8f8f8;
 }
 
@@ -381,6 +382,7 @@ td {
 
   .paragraph {
     font-size: 24px;
+    margin-bottom: 0rem;
   }
 
   .smallHeading {
@@ -444,6 +446,9 @@ td {
   }
 }
 @media screen and (min-width: 1000px) {
+  h2 {
+    font-size: 26px;
+  }
   .footerWrapper {
     padding: 5rem;
     width: 70%;
@@ -463,12 +468,18 @@ td {
     }
   }
 
+  .ordinaryHeading {
+    font-size: 30px;
+    text-align: start;
+  }
+
   .paragraph {
     font-size: 14px;
   }
 
   .wrapper {
     padding: 4rem;
+
     align-items: center;
   }
 
@@ -499,6 +510,8 @@ td {
   .imgSectionWrapper {
     padding: 0rem 4rem 4rem 4rem;
     width: 50%;
+    padding-bottom: 0rem;
+    padding-top: 0rem;
   }
 
   .imgContainerLeft {
@@ -533,5 +546,22 @@ td {
 
   .imgContainer {
     margin-top: 0rem;
+  }
+  .footer {
+    margin-top: 3rem;
+  }
+
+  .citat {
+    p {
+      font-size: 25px;
+      text-align: center;
+      margin-right: 8rem;
+      max-width: 250px;
+      margin-top: 0rem;
+    }
+  }
+
+  .wrapper-left {
+    padding: 4rem;
   }
 }

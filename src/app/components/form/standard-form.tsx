@@ -1,6 +1,6 @@
 export const StandardForm = ({ settings }: any) => {
   return (
-    <div className="w-[55%] p-20">
+    <div className="lg:w-[55%] p-4 lg:p-20">
       {settings && (
         <>
           <h2 className="text-center">{settings.title_flexible_trips}</h2>

@@ -24,7 +24,9 @@ export const Tabel = ({ content }: any) => {
             {content?.tabel?.map((row: any, index: number) => (
               <tr
                 key={index}
-                style={{ display: index < 5 || isOpen ? "table-row" : "none" }}
+                style={{
+                  display: index < 5 || isOpen ? "table-row" : "none",
+                }}
               >
                 <td>{row.country}</td>
                 <td>{row.dates}</td>

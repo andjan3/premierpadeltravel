@@ -18,7 +18,7 @@ export const InfoBlock = ({ paket }: any) => {
 
   return (
     <div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 mt-10 lg:mt-0">
         {paket.map((el: any) => {
           return (
             <div className="flex flex-col  gap-6">
@@ -32,7 +32,7 @@ export const InfoBlock = ({ paket }: any) => {
 
               <div
                 className={`${
-                  open == el._uid ? "grid grid-cols-1 gap-6" : "hidden"
+                  open == el._uid ? "lg:grid lg:grid-cols-1 lg:gap-6" : "hidden"
                 }`}
               >
                 {el.image && <PackageImageBlock el={el} />}

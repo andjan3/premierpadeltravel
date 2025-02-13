@@ -1,6 +1,6 @@
 export const TravelReqForm = ({ settings }: any) => {
   return (
-    <form className="mt-10 w-[50%]">
+    <form className="mt-10 lg:w-[50%]">
       <div className="grid grid-cols-2 gap-4">
         <input type="text" name="" id="" placeholder={settings.company_name} />
         <input

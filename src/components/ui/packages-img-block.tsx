@@ -14,13 +14,13 @@ export const PackageImageBlock = ({ el }: any) => {
   return (
     <>
       <div className={`${"image" in el ? "flex  gap-6" : "hidden"}`}>
-        <div className="flex  justify-center items-center gap-6">
+        <div className="lg:flex  justify-center items-center gap-6">
           {el.video ? (
             <video controls className="w-[50%] h-full object-cover">
               <source src={el?.image?.filename} type="video/mp4" />
             </video>
           ) : (
-            <div className="relative w-[42.2vw] h-[400px]">
+            <div className="relative lg:w-[42.2vw] h-[300px] lg:h-[400px]">
               <Image
                 src={el?.image?.filename}
                 fill
@@ -30,7 +30,7 @@ export const PackageImageBlock = ({ el }: any) => {
             </div>
           )}
 
-          <div className="text-[14px] max-w-[48%]">
+          <div className="text-[14px] mt-4 lg:mt-0 lg:max-w-[48%]">
             <div className="package-container">{render(el.content)}</div>
             {readMore && <div>{render(el.dropdown_content)}</div>}
             <div className={`${!el.video ? "hidden" : "text-[14px]"}`}>
