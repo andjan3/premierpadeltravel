@@ -1,12 +1,12 @@
-import { useState } from "react";
 import { BsPlusLg } from "react-icons/bs";
 import { Card } from "./card";
 import { PackageImageBlock } from "./ui/packages-img-block";
 import { DropDown } from "./ui/dropdown";
 import { Tabel } from "./tabel";
+import useStore from "./lib/store";
 
 export const InfoBlock = ({ paket }: any) => {
-  const [open, setOpen] = useState("");
+  const { open, setOpen } = useStore();
 
   const handleClick = (id: any) => {
     setOpen(open === id ? null : id);
@@ -32,14 +32,16 @@ export const InfoBlock = ({ paket }: any) => {
 
               <div
                 className={`${
-                  open == el._uid ? "lg:grid lg:grid-cols-1 lg:gap-6" : "hidden"
+                  open == el._uid
+                    ? "lg:flex flex-col lg:gap-8 lg:mt-4 lg:mb-4"
+                    : "hidden"
                 }`}
               >
-                {el.image && <PackageImageBlock el={el} />}
+                <PackageImageBlock el={el} />
 
-                {el.card && <Card content={el} />}
+                <Card content={el} />
 
-                {el.component == "program" && <DropDown el={el} />}
+                <DropDown el={el} />
 
                 <Tabel content={el} />
               </div>

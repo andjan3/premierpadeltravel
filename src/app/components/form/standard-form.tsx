@@ -1,11 +1,11 @@
 export const StandardForm = ({ settings }: any) => {
   return (
-    <div className="lg:w-[55%] p-4 lg:p-20">
+    <div className="lg:w-[55%] p-4">
       {settings && (
         <>
           <h2 className="text-center">{settings.title_flexible_trips}</h2>
 
-          <form className="mt-10 w-[100%]">
+          <form className="mt-10 w-[100%] lg:mb-16">
             <div className="grid grid-cols-2 gap-4">
               <input type="text" name="" id="" placeholder={settings.name} />
               <input type="text" name="" id="" placeholder={settings.email} />

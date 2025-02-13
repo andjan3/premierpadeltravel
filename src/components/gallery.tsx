@@ -18,13 +18,13 @@ export const Gallery = ({ images }: any) => {
 
   return (
     <div>
-      <div className="flex justify-center mt-16 lg:mt-24 mr-auto">
+      <div className="flex justify-center mt-16 lg:mt-20 mr-auto">
         <div className="lg:grid grid-cols-4 gap-2 max-w-[100%]">
           {images.slice(0, visibleImages).map((el: any, index: number) => {
             return (
               <div
                 key={index}
-                className="relative !w-[85vw] mb-4 lg:mb-0 lg:!w-[20vw] h-[50vh] group"
+                className="relative !w-[85vw] mb-4 lg:mb-0 lg:!w-[20.6vw] h-[50vh] group"
               >
                 <Image
                   src={el.img.filename}

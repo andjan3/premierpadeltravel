@@ -63,7 +63,7 @@ const HeaderSection = (props: any) => {
               <li key={i}>
                 {
                   <LinkBtn
-                    className={"font-bold text-lg headerLink"}
+                    className={"font-medium text-lg headerLink"}
                     link={`/${element.link?.cached_url.replace(
                       /^\/(da|en)\//,
                       ""
@@ -94,7 +94,7 @@ const HeaderSection = (props: any) => {
             {secondMenuItems.map((element: any, i: number) => (
               <li key={i}>
                 <LinkBtn
-                  className={"font-bold text-lg headerLink"}
+                  className={"font-medium text-lg headerLink"}
                   link={`/${element.link?.cached_url.replace(
                     /^\/(da|en)\//,
                     ""

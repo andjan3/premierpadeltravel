@@ -3,13 +3,14 @@ import { storyblokEditable } from "@storyblok/react";
 import { render } from "storyblok-rich-text-react-renderer";
 
 export const About = ({ blok, lang, settings }: any) => {
-  const { Heading, content, styling_left, form, citat } = blok;
+  const { Heading, content, styling_left, form, citat, no_spacing } = blok;
 
   return (
     <div
       className={`
       ${styling_left ? "wrapper-left" : "wrapper"}
       ${form && "bg-[#f8f8f8] lg:!p-10"}
+      ${no_spacing && "no-spacing"}
     `}
       {...storyblokEditable(blok)}
     >

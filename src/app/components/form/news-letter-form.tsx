@@ -75,7 +75,7 @@ export const NewsLetterForm = ({ lang }: any) => {
   return (
     <div className="w-full flex justify-center mt-16 mb-16 lg:mb-6">
       <form
-        className="bg-[#004E70] py-10 lg:w-[60%] lg:h-[30%] p-4 lg:p-10 flex flex-col gap-4 rounded "
+        className="bg-[#004E70] py-10 lg:w-[60%] lg:h-[30%] p-4 lg:p-10 flex flex-col gap-4 rounded lg:mb-10"
         onSubmit={handleSubscribe}
       >
         <div className="uppercase text-white text-center">

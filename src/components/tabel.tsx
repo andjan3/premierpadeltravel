@@ -9,16 +9,14 @@ export const Tabel = ({ content }: any) => {
   const handleOpen = () => {
     setIsOpen((prevState) => !prevState);
   };
-  console.log("conteeent", content);
 
   return (
-    <div>
+    <div
+      className={`${content?.tabel?.length > 0 ? " mb-10" : "hidden"}
+    `}
+    >
       <div className="mb-4 font-bold">{content.subtitle}</div>
-      <div
-        className={`${
-          content?.tabel?.length > 0 ? "visible mb-10" : "invisible"
-        }`}
-      >
+      <div>
         <table>
           <tbody>
             {content?.tabel?.map((row: any, index: number) => (
