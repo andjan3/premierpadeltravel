@@ -96,6 +96,7 @@ export const Packages = ({ paket, pathname, resor, lang, settings }: any) => {
 
         <InfoBlock paket={content.info_block} />
 
+        {content.gallery.length > 0 && <Gallery images={content.gallery} />}
         {/*  {content.gallery.length > 0 && <Gallery images={content.gallery} />}
         <div className="w-[100%] mt-16">
           <h2 className="text-start pb-4">{content.second_heading}</h2>{" "}

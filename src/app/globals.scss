@@ -141,7 +141,11 @@ td {
   justify-content: space-between;
   width: 85%;
 }
-
+.button-rounded {
+  padding: 20px 30px;
+  border: 2px solid #004e70;
+  border-radius: 100px;
+}
 .package-container {
   p {
     font-size: 14px;
