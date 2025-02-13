@@ -40,9 +40,11 @@ export const Filter = ({ blok, resor, settings }: any) => {
 
   return (
     <div className={`${blok.smaller_cards ? "lg:mt-14" : "lg:mt-20"}`}>
-      <h2 className="text-center text-[36px] font-bold mb-10 ">{blok.title}</h2>
+      <h2 className="ordinary-heading text-center mt-10 mb-4 lg:mt-0">
+        {blok.title}
+      </h2>
       {blok.show_filter && (
-        <div className="flex justify-center gap-4">
+        <div className="flex flex-col lg:flex-row justify-center lg:gap-4">
           <button
             className={
               filter === "alla"
@@ -53,7 +55,7 @@ export const Filter = ({ blok, resor, settings }: any) => {
           >
             Alla resor
           </button>
-          <div>|</div>
+          <div className="invisible lg:visible">|</div>
 
           {blok.filter_links.map(
             (el: any) =>
@@ -70,21 +72,21 @@ export const Filter = ({ blok, resor, settings }: any) => {
                   >
                     {el.title}
                   </button>
-                  <div>|</div>
+                  <div className="invisible lg:visible">|</div>
                 </>
               )
           )}
         </div>
       )}
-      <div className="w-[100%] flex justify-center text-center mt-8 text-[14px] leading-[22px]">
+      <div className="w-[100%] flex justify-center text-center mt-4 lg:mt-8 text-[14px] leading-[22px]">
         {filteredContent.map((el: any) => {
-          return <div className="w-[40%]">{el.content}</div>;
+          return <div className="w-[90%] lg:w-[40%]">{el.content}</div>;
         })}
       </div>
       <div>
         {filteredTitles.map((el: any) => {
           return (
-            <div key={el.section_title} className="mb-20">
+            <div key={el.section_title} className="mb-10 lg:mb-20">
               <div className="w-[90%] mx-auto">
                 <h2>{el.section_title}</h2>
               </div>

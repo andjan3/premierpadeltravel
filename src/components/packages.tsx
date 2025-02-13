@@ -48,8 +48,8 @@ export const Packages = ({ paket, pathname, resor, lang, settings }: any) => {
         </p>
       </div>
 
-      <div className="package-container flex flex-col w-[85%]     m-auto">
-        <div className="grid grid-cols-2 gap-32 w-[100%]  p-4 mt-14 mb-6">
+      <div className="package-container flex flex-col w-[85%] m-auto">
+        <div className="lg:grid grid-cols-2 gap-32 w-[100%] mt-6 lg:p-4 lg:mt-14 mb-6">
           <div className="flex flex-col gap-4">
             <h2>{content.heading}</h2>
             <div className="flex gap-4">
@@ -87,7 +87,7 @@ export const Packages = ({ paket, pathname, resor, lang, settings }: any) => {
                 <div className="text-[18px]">{content.price}</div>
               </div>
             </div>
-            <div className="package-info w-[670px] mt-10">
+            <div className="package-info lg:w-[670px] mt-4 mb-8 lg:mb-0 lg:mt-10">
               {render(content.package_info)}
             </div>
           </div>
@@ -248,8 +248,10 @@ export const Packages = ({ paket, pathname, resor, lang, settings }: any) => {
           {content.card && <Card content={content.card} lang={lang} />}
         </div>
         <div>
-          <h2 className="pb-4">{settings.travel_title}</h2>
-          <div className="grid grid-cols-4 gap-4">
+          <h2 className="text-center lg:text-start pb-4">
+            {settings.travel_title}
+          </h2>
+          <div className="lg:grid grid-cols-4 gap-4">
             {resor
               .filter((item: any) =>
                 item.content.category.includes("populara-resor")

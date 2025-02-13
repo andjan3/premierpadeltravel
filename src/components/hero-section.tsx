@@ -28,6 +28,7 @@ const HeroSection = ({ blok }: any) => {
           autoPlay
           muted
           loop
+          playsInline
           className="absolute top-0 left-0 w-full object-cover h-[80vh]"
         >
           <source src={image.filename} type="video/mp4" />
@@ -38,7 +39,7 @@ const HeroSection = ({ blok }: any) => {
         className="md:p-0 relative z-10 flex-col flex justify-center items-center text-white h-[100%]"
       >
         {heroImage && (
-          <div className="h-[50vh] lg:h-[40vh] lg:w-full">
+          <div className="h-[30vh] lg:h-[40vh] lg:w-full">
             <Image
               alt={image.name}
               layout="fill"
@@ -55,7 +56,7 @@ const HeroSection = ({ blok }: any) => {
             {title}
           </h1>
         ) : (
-          <h1 className="absolute left-50 text-[45px] md:text-6xl font-bold uppercase text-center z-[100]">
+          <h1 className="absolute left-50 text-[30px] lg:text-[45px] md:text-6xl font-bold uppercase text-center z-[100]">
             {title}
           </h1>
         )}

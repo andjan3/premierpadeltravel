@@ -17,7 +17,7 @@ export const Card = ({ content }: any) => {
 
   return (
     <div>
-      <div className="w-[50%]">{render(content.content)}</div>
+      <div className="lg:w-[50%]">{render(content.content)}</div>
       <div
         className={`${
           content.card?.length > 0
@@ -32,11 +32,11 @@ export const Card = ({ content }: any) => {
           return (
             <div
               key={el.title}
-              className={`flex flex-row gap-4 bg-white rounded shadow-lg ${
-                openStates[index] ? "h-[65vh]" : "h-[48vh]"
+              className={`lg:flex flex-row gap-4 bg-white rounded shadow-lg ${
+                openStates[index] ? "lg:h-[65vh]" : "lg:h-[48vh]"
               }`}
             >
-              <div className="w-[50%]">
+              <div className="lg:w-[50%]">
                 <Image
                   src={el.img.filename}
                   alt={el.img.alt}
@@ -46,7 +46,7 @@ export const Card = ({ content }: any) => {
                 />
               </div>
               <div
-                className={`flex flex-col gap-2 p-4 w-[50%] ${
+                className={`flex flex-col gap-2 p-4 lg:w-[50%] ${
                   !hasBulletList && "items-center justify-center"
                 }`}
               >
@@ -71,7 +71,7 @@ export const Card = ({ content }: any) => {
                         {el.second_content && (
                           <div
                             className={`${
-                              openStates[index] ? "-mt-4" : "hidden"
+                              openStates[index] ? "lg:-mt-4" : "hidden"
                             }`}
                           >
                             {render(el.second_content)}
