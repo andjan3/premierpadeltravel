@@ -16,7 +16,7 @@ export const ImageSection = ({ blok }: any) => {
       <div className="imgSectionWrapper ">
         <h2 className="smallHeading">{heading}</h2>
         <div className="flex gap-[5px] items-center">
-          <div className="paragraph text-start">{render(content)}</div>
+          <div className="paragraph">{render(content)}</div>
         </div>
         <div className="lg:mt-10">
           {show_link && (

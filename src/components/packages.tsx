@@ -8,27 +8,19 @@ import { CiLocationOn } from "react-icons/ci";
 import { IoTicketOutline } from "react-icons/io5";
 import { BookingForm } from "@/app/components/form/booking-form";
 import { NewsLetterForm } from "@/app/components/form/news-letter-form";
-import { IoIosArrowDown } from "react-icons/io";
 import useStore from "@/components/lib/store";
-import { DropDown } from "./ui/dropdown";
-import { Tabel } from "./tabel";
 import { TripsCard } from "./ui/trips-card";
 import { Card } from "./card";
 import { InfoBlock } from "./info-block";
 
-export const Packages = ({ paket, pathname, resor, lang, settings }: any) => {
+export const Packages = ({ paket, resor, lang, settings }: any) => {
   const text =
     lang === "sv" ? "Läs mer" : lang === "en" ? "Read more" : "Læs mere";
 
   const text2 =
     lang === "sv" ? "Läs mindre" : lang === "en" ? "Read less" : "Læs mindre";
 
-  const { openDropdown, setOpenDropdown, openCalender, setOpenCalender } =
-    useStore();
-
-  const handleDropdown = (state: boolean) => {
-    setOpenDropdown(!state);
-  };
+  const { openCalender, setOpenCalender } = useStore();
 
   const { content } = paket.data.data.story;
 
@@ -97,152 +89,6 @@ export const Packages = ({ paket, pathname, resor, lang, settings }: any) => {
         <InfoBlock paket={content.info_block} />
 
         {content.gallery.length > 0 && <Gallery images={content.gallery} />}
-        {/*  {content.gallery.length > 0 && <Gallery images={content.gallery} />}
-        <div className="w-[100%] mt-16">
-          <h2 className="text-start pb-4">{content.second_heading}</h2>{" "}
-        </div>
-        <div
-          className={`
-          ${
-            content.video_content
-              ? "flex flex-col gap-6"
-              : "flex flex-row flex-wrap"
-          }
-          ${content.second_video.filename != "" ? "gap-4" : ""}
-        `}
-        >
-          <div
-            className={` relative ${
-              content.video_content &&
-              "h-full w-full flex justify-center bg-[#f8f8f8] gap-8 py-10 px-8"
-            } ${
-              content.image_styling &&
-              "image-styling flex gap-8 bg-[#f8f8f8] items-center py-10 px-8 mb-10"
-            } ${
-              !content.image_styling
-                ? "mb-16 w-[41.3vw] h-[55vh]"
-                : "grid grid-cols-2  w-auto h-[80vh] relative"
-            }`}
-          >
-            {content.video_content ? (
-              <video controls className="w-[50%] h-full object-cover">
-                <source src={content.video.filename} type="video/mp4" />
-              </video>
-            ) : (
-              <div className="relative w-[100%] h-[100%]">
-                <Image
-                  src={content.video.filename}
-                  layout={content.image_styling ? "fill" : "fill"}
-                  className="object-cover"
-                  alt={content.video.alt}
-                />
-              </div>
-            )}
-
-            <div className="spacing">
-              {render(content.content)}
-              {content.content_dropdown?.content[0].content?.length > 0 && (
-                <div
-                  className="flex items-center text-[14px] cursor-pointer"
-                  onClick={() => handleDropdown(openDropdown)}
-                >
-                  {openDropdown ? text2 : text}
-                  <IoIosArrowDown
-                    fontSize={20}
-                    className={`pt-1 ml-2 ${openDropdown && "rotate-180"}`}
-                  />
-                </div>
-              )}
-            </div>
-            {content.content_dropdown && openDropdown && (
-              <div>{render(content.content_dropdown)}</div>
-            )}
-          </div>
-
-          <div
-            className={` relative ${
-              content.video_content &&
-              "h-full w-full flex justify-center bg-[#f8f8f8] gap-8 py-10 px-8"
-            } ${
-              !content.image_styling ? "mb-16 w-[41.3vw] h-[55vh]" : "w-auto"
-            }`}
-          >
-            {content.video_content ? (
-              <video controls className="w-[50%] h-full object-cover">
-                <source src={content.second_video.filename} type="video/mp4" />
-              </video>
-            ) : (
-              <>
-                {content.second_video.filename != "" ? (
-                  <Image
-                    src={content.second_video.filename}
-                    width={content.image_styling ? 700 : undefined}
-                    height={content.image_styling ? 700 : undefined}
-                    layout={content.image_styling ? "intrinsic" : "fill"}
-                    className="object-cover"
-                    alt={content.second_video.alt}
-                  />
-                ) : null}
-              </>
-            )}
-            <div className="flex flex-col items-center gap-4 mb-4 w-[100%]">
-              <div>
-                <h2 className="pb-4">{content.additional_heading}</h2>
-              </div>
-              <div
-                className={` ${
-                  content.second_video.filename != "" ? "w-[100%]" : "w-[80%]"
-                }`}
-              >
-                <div
-                  className={`${!content.video_content && "hidden"}  ${
-                    pathname === "paket-2" || pathname === "paket-8"
-                      ? "additional-content"
-                      : "add-content"
-                  }`}
-                >
-                  {render(content.additional_content)}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className={`${
-            content.video_content || content.additional_content > 0
-              ? "hidden"
-              : "-mt-16 mb-10 w-[100%]  spacing"
-          }  ${
-            pathname === "paket-6" || pathname === "paket-7"
-              ? "additional-content"
-              : "add-content"
-          }`}
-        >
-          {render(content.additional_content)}
-        </div>
-        {content.tabel_heading !== "" && (
-          <div>
-            <h2 className="pb-4">{content.tabel_heading}</h2>
-            <Tabel content={content.tabel} lang={lang} />
-          </div>
-        )}
-        {content.program_dropdown && <DropDown content={content} />}
-        <div className="flex flex-col gap-4">
-          <h2>{content.card_title}</h2>
-          {content.card && <Card content={content.card} lang={lang} />}
-        </div>
-        <div>
-          <h2 className="pb-4">{settings.travel_title}</h2>
-          <div className="grid grid-cols-4 gap-4">
-            {resor
-              .filter((item: any) =>
-                item.content.category.includes("populara-resor")
-              )
-              .map((item: any) => (
-                <TripsCard item={item} boolean={true} />
-              ))}
-          </div>
-        </div> */}
 
         <div className="flex flex-col gap-4 mt-16">
           {content.card && <Card content={content.card} lang={lang} />}
