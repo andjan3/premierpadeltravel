@@ -201,6 +201,10 @@ td {
   font-weight: 400;
   max-width: 700px;
   font-size: 14px;
+  p {
+    line-height: 1.5rem;
+  }
+
   a {
     font-weight: 400;
     font-size: 14px;
@@ -208,6 +212,14 @@ td {
   }
 }
 
+.citat {
+  p {
+    font-size: 25px;
+    text-align: center;
+    margin-right: 8rem;
+    max-width: 250px;
+  }
+}
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -456,7 +468,7 @@ td {
   }
 
   .wrapper {
-    padding: 0rem;
+    padding: 4rem;
     align-items: center;
   }
 
