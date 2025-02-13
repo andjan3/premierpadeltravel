@@ -5,12 +5,7 @@ import { render } from "storyblok-rich-text-react-renderer";
 import { IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
 
-export const Card = ({ content, lang }: any) => {
-  const text =
-    lang === "sv" ? "Läs mer" : lang === "en" ? "Read more" : "Læs mere";
-  const text2 =
-    lang === "sv" ? "Läs mindre" : lang === "en" ? "Read less" : "Læs mindre";
-
+export const Card = ({ content }: any) => {
   const [openStates, setOpenStates] = useState<{ [key: string]: boolean }>({});
 
   const handleOpen = (index: number) => {
@@ -83,7 +78,7 @@ export const Card = ({ content, lang }: any) => {
                           </div>
                         )}
                         <div className="flex items-end mt-6">
-                          {openStates[index] ? text2 : text}
+                          {openStates[index] ? "Läs mindre" : "Läs mer"}
                           <IoIosArrowDown
                             fontSize={20}
                             className={`pt-1 ml-2 ${

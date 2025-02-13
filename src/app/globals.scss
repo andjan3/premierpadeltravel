@@ -130,18 +130,12 @@ td {
   }
 }
 
-/* .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 16px;
+.package-container {
+  ul {
+    list-style: disc;
+    margin-left: 1rem;
+  }
 }
-
-.gallery-item {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-} */
-
 .followLinks {
   display: flex;
   justify-content: space-between;

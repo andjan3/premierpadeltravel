@@ -242,6 +242,22 @@ export const Packages = ({ paket, pathname, resor, lang, settings }: any) => {
               ))}
           </div>
         </div> */}
+
+        <div className="flex flex-col gap-4 mt-16">
+          {content.card && <Card content={content.card} lang={lang} />}
+        </div>
+        <div>
+          <h2 className="pb-4">{settings.travel_title}</h2>
+          <div className="grid grid-cols-4 gap-4">
+            {resor
+              .filter((item: any) =>
+                item.content.category.includes("populara-resor")
+              )
+              .map((item: any) => (
+                <TripsCard item={item} boolean={true} />
+              ))}
+          </div>
+        </div>
         <div className="flex flex-col gap-4 mt-16">
           <div>
             <h2 className="text-center">{content.contact_title}</h2>

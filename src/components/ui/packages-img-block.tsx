@@ -31,7 +31,7 @@ export const PackageImageBlock = ({ el }: any) => {
           )}
 
           <div className="text-[14px] max-w-[48%]">
-            <div>{render(el.content)}</div>
+            <div className="package-container">{render(el.content)}</div>
             {readMore && <div>{render(el.dropdown_content)}</div>}
             <div className={`${!el.video ? "hidden" : "text-[14px]"}`}>
               {readMore ? (
@@ -56,19 +56,19 @@ export const PackageImageBlock = ({ el }: any) => {
         </div>
       </div>
 
-      <div
-        className={`flex  flex-row items-center gap-6 ${
-          el.image_right &&
-          "flex-row-reverse justify-center -mt-[1.5rem] -mb-[1.5rem] ml-[0.6rem]"
-        }`}
-      >
-        {el.video ? (
-          <video controls className="w-[50%] h-full object-cover">
-            <source src={el?.second_image?.filename} type="video/mp4" />
-          </video>
-        ) : (
-          <div className="relative w-[42.2vw] h-[400px]">
-            {el?.second_image?.filename ? (
+      {el?.second_image?.filename ? (
+        <div
+          className={`flex  flex-row items-center gap-6 ${
+            el.image_right &&
+            "flex-row-reverse justify-center -mt-[1.5rem] -mb-[1.5rem] ml-[0.6rem]"
+          }`}
+        >
+          {el.video ? (
+            <video controls className="w-[50%] h-full object-cover">
+              <source src={el?.second_image?.filename} type="video/mp4" />
+            </video>
+          ) : (
+            <div className="relative w-[42.2vw] h-[400px]">
               <div>
                 <Image
                   src={el?.second_image?.filename}
@@ -77,18 +77,17 @@ export const PackageImageBlock = ({ el }: any) => {
                   alt={el?.second_image?.alt}
                 />
               </div>
-            ) : null}
+            </div>
+          )}
+          <div className="max-w-[48%]">
+            <h3 className="font-semibold text-[14px]">{el.subtitle}</h3>
+            <div>{render(el.second_content)}</div>
           </div>
-        )}
-        <div className="max-w-[48%]">
-          <h3 className="font-semibold text-[14px]">{el.subtitle}</h3>
-          <div>{render(el.second_content)}</div>
         </div>
-      </div>
-
-      <div className="flex justify-center items-center gap-6">
-        <div className="relative w-[42.2vw] h-[400px]">
-          {el?.third_image?.filename ? (
+      ) : null}
+      {el?.third_image?.filename ? (
+        <div className="flex justify-center items-center gap-6">
+          <div className="relative w-[42.2vw] h-[400px]">
             <div>
               <Image
                 src={el?.third_image?.filename}
@@ -97,13 +96,13 @@ export const PackageImageBlock = ({ el }: any) => {
                 alt={el?.third_image?.alt}
               />
             </div>
-          ) : null}
-        </div>
+          </div>
 
-        <div className="max-w-[48%]">
-          <div>{render(el.third_content)}</div>
+          <div className="max-w-[48%]">
+            <div>{render(el.third_content)}</div>
+          </div>
         </div>
-      </div>
+      ) : null}
     </>
   );
 };
