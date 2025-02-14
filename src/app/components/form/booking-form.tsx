@@ -28,7 +28,6 @@ export const BookingForm = ({ settings }: any) => {
     }));
   };
 
-  console.log("foooorm", formData);
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({

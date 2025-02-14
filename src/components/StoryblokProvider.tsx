@@ -17,7 +17,7 @@ storyblokInit({
     Hero: HeroSection,
     section: About,
     image_section: ImageSection,
-    travelTerms: TravelTerms,
+    terms: TravelTerms,
     partners: LogoBlock,
     test_filter: Filter,
     tabel: Tabel,
