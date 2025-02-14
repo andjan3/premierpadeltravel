@@ -3,11 +3,11 @@
 import { NewsLetterForm } from "@/app/components/form/news-letter-form";
 import Image from "next/image";
 
-export const LogoBlock = ({ blok, lang }: any) => {
+export const LogoBlock = ({ blok, settings, lang }: any) => {
   const { title, logo_block } = blok;
   return (
     <div className="mt-20">
-      <NewsLetterForm lang={lang} />
+      <NewsLetterForm settings={settings} lang={lang} />
       <h2 className="text-center mt-20">{title}</h2>
       <div className="flex justify-center items-center gap-4 px-4 lg:px-0 lg:mb-20">
         {logo_block.map((el: any) => {
