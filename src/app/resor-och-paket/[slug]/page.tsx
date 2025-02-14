@@ -2,7 +2,22 @@ import { getAllResor } from "@/app/lib/get-all-resor";
 import { getData } from "@/app/lib/get-data";
 import { getResor } from "@/app/lib/get-resor";
 import { Packages } from "@/components/packages";
+import { Metadata } from "next";
 
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> => {
+  const pathname = params.slug;
+  const data = await getResor(pathname);
+
+  return {
+    title: data?.data.data.story?.content?.seo.title || "Premier padel travel",
+    description:
+      data?.data.data.story?.content?.seo.description || "Default description",
+  };
+};
 const page = async ({ params }: { params: { slug: string } }) => {
   const pathname = params.slug;
   const paket = await getResor(pathname);
