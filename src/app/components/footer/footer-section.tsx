@@ -61,7 +61,7 @@ const FooterSection = ({ props }: any) => {
 
             <LinkBtn
               className="smallText"
-              link={`${CookiePolicy.cached_url.replace(/^\/(da|en)\//, "")}`}
+              link="/cookies"
               title={CookieTitle}
             />
           </div>
