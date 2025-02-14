@@ -115,7 +115,7 @@ export const Packages = ({ paket, resor, lang, settings }: any) => {
             <div className="contact">{render(content.contact_content)}</div>
           </div>
         </div>
-        <NewsLetterForm lang={lang} />
+        <NewsLetterForm settings={settings} lang={lang} />
       </div>
     </div>
   );
