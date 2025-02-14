@@ -2,6 +2,7 @@ import { getStoryblokApi, StoryblokStory } from "@storyblok/react/rsc";
 import { redirect } from "next/navigation";
 import { getAllResor } from "../lib/get-all-resor";
 import { getData } from "../lib/get-data";
+import { Metadata } from "next";
 
 async function fetchData(slug: string) {
   let sbParams = {
@@ -10,21 +11,10 @@ async function fetchData(slug: string) {
   };
 
   const client = getStoryblokApi();
-  try {
-    const data = await client.get(`cdn/stories/${slug}`, sbParams);
 
-    if (!data) {
-      throw new Error("Not Found");
-    }
+  const data = await client.get(`cdn/stories/${slug}`, sbParams);
 
-    return { data };
-  } catch (error: any) {
-    if (error.response && error.response.status === 500) {
-      redirect("/500");
-    } else {
-      throw error;
-    }
-  }
+  return { data };
 }
 
 const Page = async ({ params }: { params: { slug: string } }) => {
@@ -43,6 +33,22 @@ const Page = async ({ params }: { params: { slug: string } }) => {
       settings={settings.data.data.story.content}
     />
   );
+};
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> => {
+  const pathname = params.slug;
+  const slugName = !pathname || pathname === "" ? "home" : pathname;
+  const data = await fetchData(slugName);
+
+  return {
+    title: data?.data.data.story?.content?.seo.title || "Premier padel travel",
+    description:
+      data?.data.data.story?.content?.seo.description || "Default description",
+  };
 };
 
 export default Page;
