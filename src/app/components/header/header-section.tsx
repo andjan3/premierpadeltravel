@@ -121,9 +121,9 @@ const HeaderSection = (props: any) => {
             <div className="flex items-center justify-center h-[62vh]">
               <ul>
                 {firstMenuItems.map((element: any, i: number) => (
-                  <li key={i} className={" mb-[20px]"} onClick={toggleMenu}>
+                  <li key={i} className={"mb-[20px] "} onClick={toggleMenu}>
                     <LinkBtn
-                      className={"font-bold text-lg mb-[20px]"}
+                      className={"font-semibold mb-[20px] text-[36px]"}
                       link={`${element.link?.cached_url.replace(
                         /^\/(da|en)\//,
                         "/"
@@ -133,9 +133,9 @@ const HeaderSection = (props: any) => {
                   </li>
                 ))}
                 {secondMenuItems.map((element: any, i: number) => (
-                  <li key={i} className={" mb-[20px]"} onClick={toggleMenu}>
+                  <li key={i} className={"mb-[20px]"} onClick={toggleMenu}>
                     <LinkBtn
-                      className={"font-bold text-lg"}
+                      className={"font-semibold text-[36px]"}
                       link={`${element.link?.cached_url.replace(
                         /^\/(da|en)\//,
                         "/"
