@@ -16,7 +16,7 @@ export const LogoBlock = ({ blok, settings, lang }: any) => {
               <Image
                 src={el.img.filename}
                 layout="fill"
-                objectFit="contain"
+                className="object-contain"
                 alt={el.img.alt}
               />
             </div>

@@ -79,12 +79,16 @@ export const Filter = ({ blok, resor, settings }: any) => {
         </div>
       )}
       <div className="w-[100%] flex justify-center text-center mt-4 lg:mt-8 text-[14px] leading-[22px]">
-        {filteredContent.map((el: any) => {
-          return <div className="w-[90%] lg:w-[40%]">{el.content}</div>;
+        {filteredContent.map((el: any, index: number) => {
+          return (
+            <div className="w-[90%] lg:w-[40%]" key={index}>
+              {el.content}
+            </div>
+          );
         })}
       </div>
       <div>
-        {filteredTitles.map((el: any) => {
+        {filteredTitles.map((el: any, index: number) => {
           return (
             <div
               key={el.section_title}
@@ -113,7 +117,11 @@ export const Filter = ({ blok, resor, settings }: any) => {
                   )
                   .map((item: any, index: number) => {
                     return (
-                      <TripsCard item={item} boolean={blok.smaller_cards} />
+                      <TripsCard
+                        item={item}
+                        boolean={blok.smaller_cards}
+                        key={index}
+                      />
                     );
                   })}
               </div>
@@ -121,9 +129,12 @@ export const Filter = ({ blok, resor, settings }: any) => {
           );
         })}
       </div>
-      {filteredForm.map((el: any) => {
+      {filteredForm.map((el: any, index: number) => {
         return (
-          <div className="flex justify-center mb-20 lg:mb-0 lg:mt-10">
+          <div
+            className="flex justify-center mb-20 lg:mb-0 lg:mt-10"
+            key={index}
+          >
             <StandardForm settings={settings} />
           </div>
         );

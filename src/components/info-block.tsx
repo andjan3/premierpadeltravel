@@ -19,9 +19,9 @@ export const InfoBlock = ({ paket }: any) => {
   return (
     <div>
       <div className="flex flex-col gap-6 mt-10 lg:mt-0">
-        {paket.map((el: any) => {
+        {paket.map((el: any, index: number) => {
           return (
-            <div className="flex flex-col  gap-6">
+            <div className="flex flex-col  gap-6" key={index}>
               <div
                 className="flex items-center text-[26px] gap-6 cursor-pointer max-w-[350px] justify-between bg-[#f8f8f8] p-6"
                 onClick={() => handleClick(el._uid)}
