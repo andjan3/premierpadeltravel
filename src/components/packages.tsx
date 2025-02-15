@@ -31,7 +31,7 @@ export const Packages = ({ paket, resor, lang, settings }: any) => {
         <Image
           alt={content.hero.name}
           layout="fill"
-          objectFit="cover"
+          className="object-cover"
           objectPosition="center"
           src={content.hero.filename}
         />
@@ -102,8 +102,8 @@ export const Packages = ({ paket, resor, lang, settings }: any) => {
               .filter((item: any) =>
                 item.content.category.includes("populara-resor")
               )
-              .map((item: any) => (
-                <TripsCard item={item} boolean={true} />
+              .map((item: any, index: number) => (
+                <TripsCard item={item} boolean={true} key={index} />
               ))}
           </div>
         </div>

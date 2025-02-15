@@ -4,11 +4,9 @@ import Image from "next/image";
 import { render } from "storyblok-rich-text-react-renderer";
 import { IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
-import useStore from "./lib/store";
 
 export const Card = ({ content }: any) => {
   const [openStates, setOpenStates] = useState<{ [key: string]: boolean }>({});
-  const { open } = useStore();
 
   const handleOpen = (index: number) => {
     setOpenStates((prevState) => ({

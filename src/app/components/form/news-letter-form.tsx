@@ -98,7 +98,7 @@ export const NewsLetterForm = ({ settings, lang }: any) => {
                 type="text"
                 name="b_6aa9cfbc3d8900a7eb5546b9f_e260c3901c"
                 tabIndex={-1}
-                value=""
+                value={undefined}
               />
             </div>
           </div>
@@ -128,6 +128,7 @@ export const NewsLetterForm = ({ settings, lang }: any) => {
 })();
 `,
         }}
+        id="newsletter-script"
       ></Script>
     </div>
   );

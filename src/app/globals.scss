@@ -323,7 +323,6 @@ td {
 .travelTermsWrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin-bottom: 3rem;
 }
 
@@ -332,6 +331,13 @@ td {
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
+}
+
+.terms {
+  li {
+    list-style: disc;
+    margin-left: 1rem;
+  }
 }
 .bulletList {
   list-style-type: disc;
@@ -344,10 +350,6 @@ td {
 
 .italic {
   font-weight: 400;
-}
-
-.headerDiv {
-  border-bottom: 2px solid black;
 }
 
 .smallText {
@@ -531,19 +533,10 @@ td {
   }
 
   .travelTermsContent {
-    max-width: 50vw;
     padding: 0rem;
   }
   .travelTermsWrapper {
     gap: 2rem;
-  }
-
-  .bigHeading {
-    font-size: 6rem;
-  }
-
-  .headerDiv {
-    width: 80%;
   }
 
   .mediumHeading {
@@ -570,8 +563,7 @@ td {
   .wrapper-left {
     padding: 4rem;
   }
-
-  .card-container:nth-of-type(5) {
+  .card-container:nth-of-type(6) {
     margin-bottom: 0rem;
   }
 
