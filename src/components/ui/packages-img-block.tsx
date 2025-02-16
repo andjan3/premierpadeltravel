@@ -16,9 +16,16 @@ export const PackageImageBlock = ({ el }: any) => {
       <div
         className={`${"image" in el && el.image ? "flex  gap-6" : "hidden"}`}
       >
-        <div className="lg:flex  justify-center items-center gap-6">
+        <div
+          className={` lg:flex  justify-center gap-6 grid grid-cols-1 mb-6 lg:mb-0 ${
+            readMore ? "items-start" : "items-center"
+          }`}
+        >
           {el.video ? (
-            <video controls className="w-[50%] h-full object-cover">
+            <video
+              controls
+              className="w-[100%] lg:w-[50%] h-full lg:max-h-[364px] object-cover"
+            >
               <source src={el?.image?.filename} type="video/mp4" />
             </video>
           ) : (
@@ -32,9 +39,11 @@ export const PackageImageBlock = ({ el }: any) => {
             </div>
           )}
 
-          <div className="text-[14px] mt-4 lg:mt-0 lg:max-w-[48%]">
+          <div className="text-[14px] mt-4 lg:mt-0 w-[100%] lg:max-w-[48%]">
             <div className="package-container">{render(el.content)}</div>
-            {readMore && <div>{render(el.dropdown_content)}</div>}
+            {readMore && (
+              <div className="lg:mt-4">{render(el.dropdown_content)}</div>
+            )}
             <div className={`${!el.video ? "hidden" : "text-[14px]"}`}>
               {readMore ? (
                 <div
@@ -60,13 +69,16 @@ export const PackageImageBlock = ({ el }: any) => {
 
       {el?.second_image?.filename ? (
         <div
-          className={`flex  flex-row items-center gap-6 ${
+          className={`lg:flex  flex-row items-center gap-6 grid grid-cols-1 ${
             el.image_right &&
             "flex-row-reverse justify-center -mt-[2rem] -mb-[2rem] ml-[0.6rem]"
           }`}
         >
           {el.video ? (
-            <video controls className="w-[50%] h-full object-cover">
+            <video
+              controls
+              className="w-[100%] lg:w-[50%] h-full lg:max-h-[364px] object-cover"
+            >
               <source src={el?.second_image?.filename} type="video/mp4" />
             </video>
           ) : (
@@ -81,7 +93,7 @@ export const PackageImageBlock = ({ el }: any) => {
               </div>
             </div>
           )}
-          <div className="max-w-[48%]">
+          <div className="w-[100%] lg:max-w-[48%]">
             <h3 className="font-semibold text-[14px]">{el.subtitle}</h3>
             <div>{render(el.second_content)}</div>
           </div>
