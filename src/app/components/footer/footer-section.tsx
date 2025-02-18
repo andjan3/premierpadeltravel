@@ -46,13 +46,13 @@ const FooterSection = ({ props }: any) => {
           <div className="linkWrapper">
             <LinkBtn
               className="smallText"
-              link={`/${Resevillkor.cached_url.replace(/^(da|en)\//, "")}`}
+              link={`/${Resevillkor.cached_url.replace(/^(\/)?(da|en)\//, "")}`}
               title={ReseVillkorTitle}
             />
 
             <LinkBtn
               className="smallText"
-              link={`${Integritetspolicy.cached_url.replace(
+              link={`/${Integritetspolicy.cached_url.replace(
                 /^\/(da|en)\//,
                 ""
               )}`}

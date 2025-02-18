@@ -10,6 +10,8 @@ interface ContentProps {
   content: {
     card: CardItem[];
     content: React.ReactNode[];
+    read_less_btn: string;
+    read_more_btn: string;
   };
 }
 
@@ -86,7 +88,9 @@ export const Card = ({ content }: ContentProps) => {
                           </div>
                         )}
                         <div className="flex items-end mt-6">
-                          {openStates[index] ? "Läs mindre" : "Läs mer"}
+                          {openStates[index]
+                            ? `${content.read_less_btn}`
+                            : `${content.read_more_btn}`}
                           <IoIosArrowDown
                             fontSize={20}
                             className={`pt-1 ml-2 ${

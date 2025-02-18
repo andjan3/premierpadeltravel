@@ -41,6 +41,11 @@ interface ContentProps {
     contact_title: string;
     contact_content: React.ReactNode[];
     gallery: string[];
+    date_title: string;
+    position_title: string;
+    price_title: string;
+    load_more_btn: string;
+    load_btn: string;
   };
 }
 
@@ -54,6 +59,7 @@ export const Packages = ({ paket, resor, lang, settings }: PackagesProps) => {
   const { openCalender, setOpenCalender } = useStore();
 
   const { content } = paket;
+  console.log("content", content);
 
   return (
     <div>
@@ -80,7 +86,7 @@ export const Packages = ({ paket, resor, lang, settings }: PackagesProps) => {
                 <CiCalendarDate fontSize={30} />
               </span>
               <div className="flex flex-col">
-                <h2 className="smaller-heading ">Datum</h2>
+                <h2 className="smaller-heading ">{content.date_title}</h2>
                 <div className="text-[18px]">{content.date}</div>
                 {content.choose_dates !== "" && (
                   <button
@@ -97,7 +103,7 @@ export const Packages = ({ paket, resor, lang, settings }: PackagesProps) => {
                 <CiLocationOn fontSize={30} />
               </span>
               <div className="flex flex-col">
-                <h2 className="smaller-heading ">Plats</h2>
+                <h2 className="smaller-heading ">{content.position_title}</h2>
                 <div className="text-[18px]">{content.position}</div>
               </div>
             </div>
@@ -106,7 +112,7 @@ export const Packages = ({ paket, resor, lang, settings }: PackagesProps) => {
                 <IoTicketOutline fontSize={30} />
               </span>
               <div className="flex flex-col">
-                <h2 className="smaller-heading ">Pris</h2>
+                <h2 className="smaller-heading ">{content.price_title}</h2>
                 <div className="text-[18px]">{content.price}</div>
               </div>
             </div>
@@ -119,7 +125,9 @@ export const Packages = ({ paket, resor, lang, settings }: PackagesProps) => {
 
         <InfoBlock paket={content.info_block} />
 
-        {content.gallery.length > 0 && <Gallery images={content.gallery} />}
+        {content.gallery.length > 0 && (
+          <Gallery images={content.gallery} content={content} />
+        )}
 
         <div className="flex flex-col gap-4 mt-16">
           {content.card && <Card content={content.card} />}

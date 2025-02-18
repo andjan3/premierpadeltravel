@@ -5,9 +5,13 @@ import { useState } from "react";
 
 interface GalleryProps {
   images: string[];
+  content: {
+    load_more_btn: string;
+    load_btn: string;
+  };
 }
 
-export const Gallery = ({ images }: GalleryProps) => {
+export const Gallery = ({ images, content }: GalleryProps) => {
   const [visibleImages, setVisibleImages] = useState(4);
   const [loading, setLoading] = useState(false);
 
@@ -59,7 +63,7 @@ export const Gallery = ({ images }: GalleryProps) => {
             onClick={handleLoadMore}
             disabled={loading}
           >
-            {loading ? "Laddar..." : "Ladda fler"}
+            {loading ? `${content.load_btn}` : `${content.load_more_btn}`}
           </button>
         </div>
       )}
