@@ -4,8 +4,16 @@ import Image from "next/image";
 import { render } from "storyblok-rich-text-react-renderer";
 import { IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
+import { CardItem } from "./utils/interface";
 
-export const Card = ({ content }: any) => {
+interface ContentProps {
+  content: {
+    card: CardItem[];
+    content: React.ReactNode[];
+  };
+}
+
+export const Card = ({ content }: ContentProps) => {
   const [openStates, setOpenStates] = useState<{ [key: string]: boolean }>({});
 
   const handleOpen = (index: number) => {

@@ -133,7 +133,7 @@ export const BookingForm = ({ settings }: any) => {
             placeholder={arrival}
             value={formData.arrivalDate}
             onChange={handleInputChange}
-            className="w-[150px] lg:w-[100%]"
+            className="w-[150px] h-[60px] lg:w-[100%]"
           />
         </div>
       )}
@@ -158,7 +158,7 @@ export const BookingForm = ({ settings }: any) => {
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <select
           name="customerType"
           id=""
@@ -191,7 +191,7 @@ export const BookingForm = ({ settings }: any) => {
         name="message"
         id="message"
         placeholder={message}
-        className="resize-none"
+        className="resize-none h-[20vh] lg:h-[10vh]"
         value={formData.message}
         onChange={handleInputChange}
       ></textarea>

@@ -3,7 +3,11 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export const Gallery = ({ images }: any) => {
+interface GalleryProps {
+  images: string[];
+}
+
+export const Gallery = ({ images }: GalleryProps) => {
   const [visibleImages, setVisibleImages] = useState(4);
   const [loading, setLoading] = useState(false);
 

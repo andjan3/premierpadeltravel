@@ -1,8 +1,21 @@
 import { TravelReqForm } from "@/app/components/form/travel-request-form";
 import { storyblokEditable } from "@storyblok/react";
 import { render } from "storyblok-rich-text-react-renderer";
+import { Settings } from "./utils/interface";
 
-export const About = ({ blok, lang, settings }: any) => {
+interface AboutProps {
+  blok: {
+    Heading: string;
+    content: React.ReactNode[];
+    styling_left: boolean;
+    form: boolean;
+    no_spacing: boolean;
+    citat: React.ReactNode[];
+  };
+
+  settings: Settings;
+}
+export const About = ({ blok, settings }: AboutProps) => {
   const { Heading, content, styling_left, form, citat, no_spacing } = blok;
 
   return (
@@ -20,7 +33,7 @@ export const About = ({ blok, lang, settings }: any) => {
         <div className="citat">{render(citat)}</div>
       </div>
 
-      {form && <TravelReqForm lang={lang} settings={settings} />}
+      {form && <TravelReqForm settings={settings} />}
     </div>
   );
 };

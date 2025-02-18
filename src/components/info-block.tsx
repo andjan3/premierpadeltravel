@@ -4,8 +4,13 @@ import { PackageImageBlock } from "./ui/packages-img-block";
 import { DropDown } from "./ui/dropdown";
 import { Tabel } from "./tabel";
 import useStore from "./lib/store";
+import { InfoBlockElement } from "./utils/interface";
 
-export const InfoBlock = ({ paket }: any) => {
+interface InfoBlock {
+  paket: InfoBlockElement[];
+}
+
+export const InfoBlock = ({ paket }: InfoBlock) => {
   const { open, setOpen } = useStore();
 
   const handleClick = (id: any) => {
@@ -19,7 +24,7 @@ export const InfoBlock = ({ paket }: any) => {
   return (
     <div>
       <div className="flex flex-col gap-6 mt-10 lg:mt-0">
-        {paket.map((el: any, index: number) => {
+        {paket.map((el: InfoBlockElement, index: number) => {
           return (
             <div className="flex flex-col  gap-6" key={index}>
               <div
@@ -43,7 +48,7 @@ export const InfoBlock = ({ paket }: any) => {
 
                 <DropDown el={el} />
 
-                <Tabel content={el} />
+                <Tabel tabel={el} />
               </div>
             </div>
           );

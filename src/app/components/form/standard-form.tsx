@@ -1,6 +1,7 @@
+import { SettingsProps } from "@/components/utils/interface";
 import { useState } from "react";
 
-export const StandardForm = ({ settings }: any) => {
+export const StandardForm = ({ settings }: SettingsProps) => {
   const [formData, setFormData] = useState({
     name: "",
     number: "",

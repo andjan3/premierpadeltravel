@@ -1,9 +1,15 @@
 import { StandardForm } from "@/app/components/form/standard-form";
+import { Settings } from "./utils/interface";
 
-export const ContactForm = ({ lang, settings }: any) => {
+interface ContactFormProps {
+  settings: Settings;
+}
+
+export const ContactForm = ({ settings }: ContactFormProps) => {
+  console.log(settings);
   return (
     <div>
-      <StandardForm lang={lang} settings={settings} />
+      <StandardForm settings={settings} />
     </div>
   );
 };
