@@ -2,8 +2,16 @@
 
 import { IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
+import { TabelRowProps } from "./utils/interface";
 
-export const Tabel = ({ content }: any) => {
+interface TabelProps {
+  tabel: {
+    tabel: TabelRowProps[];
+    subtitle: string;
+  };
+}
+
+export const Tabel = ({ tabel }: TabelProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
@@ -11,13 +19,13 @@ export const Tabel = ({ content }: any) => {
   };
 
   return (
-    <div className={`${content?.tabel?.length > 0 ? " mb-10" : "hidden"}`}>
-      <div className="mb-4 font-bold">{content.subtitle}</div>
+    <div className={`${tabel?.tabel?.length > 0 ? " mb-10" : "hidden"}`}>
+      <div className="mb-4 font-bold">{tabel.subtitle}</div>
       <div>
         <div>
           <table className="hidden md:table">
             <tbody>
-              {content?.tabel?.map((row: any, index: number) => (
+              {tabel?.tabel?.map((row: TabelRowProps, index: number) => (
                 <tr
                   key={index}
                   style={{
@@ -34,7 +42,7 @@ export const Tabel = ({ content }: any) => {
           </table>
 
           <div className="block md:hidden">
-            {content?.tabel?.map((row: any, index: number) => (
+            {tabel?.tabel?.map((row: TabelRowProps, index: number) => (
               <div
                 key={index}
                 className="mb-6 p-4 border rounded-lg shadow-lg bg-white"

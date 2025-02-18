@@ -1,14 +1,23 @@
 "use client";
-import Image from "next/image";
-import { render } from "storyblok-rich-text-react-renderer";
 
-import Link from "next/link";
 import React, { useState } from "react";
 import { StandardForm } from "@/app/components/form/standard-form";
 import { TripsCard } from "./ui/trips-card";
 import { v4 as uuidv4 } from "uuid";
+import { Settings } from "./utils/interface";
 
-export const Filter = ({ blok, resor, settings }: any) => {
+interface FilterProps {
+  blok: {
+    filter_links: string[];
+    smaller_cards: boolean;
+    title: string;
+    show_filter: boolean;
+  };
+
+  resor: string[];
+  settings: Settings;
+}
+export const Filter = ({ blok, resor, settings }: FilterProps) => {
   const [filter, setFilter] = useState("alla");
   const [filterContent, setFilterContent] = useState("alla");
   const handleFilter = (data: string) => {
@@ -81,7 +90,7 @@ export const Filter = ({ blok, resor, settings }: any) => {
         </div>
       )}
       <div className="w-[100%] flex justify-center text-center mt-4 lg:mt-8 text-[14px] leading-[22px]">
-        {filteredContent.map((el: any, index: number) => {
+        {filteredContent.map((el: any) => {
           return (
             <div className="w-[90%] lg:w-[40%]" key={uuidv4()}>
               {el.content}
@@ -90,7 +99,7 @@ export const Filter = ({ blok, resor, settings }: any) => {
         })}
       </div>
       <div>
-        {filteredTitles.map((el: any, index: number) => {
+        {filteredTitles.map((el: any) => {
           return (
             <div
               key={uuidv4()}
@@ -117,7 +126,7 @@ export const Filter = ({ blok, resor, settings }: any) => {
                   .filter((item: any) =>
                     item.content.category.includes(el.link_title)
                   )
-                  .map((item: any, index: number) => {
+                  .map((item: any) => {
                     return (
                       <TripsCard
                         item={item}
@@ -131,7 +140,7 @@ export const Filter = ({ blok, resor, settings }: any) => {
           );
         })}
       </div>
-      {filteredForm.map((el: any, index: number) => {
+      {filteredForm.map((el: any) => {
         return (
           <div
             className="flex justify-center mb-20 lg:mb-0 lg:mt-10"

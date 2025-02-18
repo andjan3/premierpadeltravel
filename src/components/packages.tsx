@@ -12,8 +12,39 @@ import useStore from "@/components/lib/store";
 import { TripsCard } from "./ui/trips-card";
 import { Card } from "./card";
 import { InfoBlock } from "./info-block";
+import { Settings } from "./utils/interface";
 
-export const Packages = ({ paket, resor, lang, settings }: any) => {
+interface PackagesProps {
+  paket: ContentProps;
+
+  resor: string[];
+
+  lang: any;
+  settings: Settings;
+}
+
+interface ContentProps {
+  content: {
+    hero: {
+      name: string;
+      filename: string;
+    };
+    hero_title: string;
+    heading: string;
+    date: string;
+    choose_dates: string;
+    position: string;
+    price: string;
+    package_info: React.ReactNode[];
+    info_block: any[];
+    card: any;
+    contact_title: string;
+    contact_content: React.ReactNode[];
+    gallery: string[];
+  };
+}
+
+export const Packages = ({ paket, resor, lang, settings }: PackagesProps) => {
   const text =
     lang === "sv" ? "Läs mer" : lang === "en" ? "Read more" : "Læs mere";
 
@@ -22,7 +53,7 @@ export const Packages = ({ paket, resor, lang, settings }: any) => {
 
   const { openCalender, setOpenCalender } = useStore();
 
-  const { content } = paket.data.data.story;
+  const { content } = paket;
 
   return (
     <div>
@@ -91,7 +122,7 @@ export const Packages = ({ paket, resor, lang, settings }: any) => {
         {content.gallery.length > 0 && <Gallery images={content.gallery} />}
 
         <div className="flex flex-col gap-4 mt-16">
-          {content.card && <Card content={content.card} lang={lang} />}
+          {content.card && <Card content={content.card} />}
         </div>
         <div>
           <h2 className="text-center lg:text-start pb-4">

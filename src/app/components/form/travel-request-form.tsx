@@ -1,6 +1,7 @@
+import { SettingsProps } from "@/components/utils/interface";
 import { useState } from "react";
 
-export const TravelReqForm = ({ settings }: any) => {
+export const TravelReqForm = ({ settings }: SettingsProps) => {
   const [formData, setFormData] = useState({
     companyName: "",
     contactPerson: "",

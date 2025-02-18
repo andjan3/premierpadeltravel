@@ -4,8 +4,39 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { useState } from "react";
 
-export const PackageImageBlock = ({ el }: any) => {
+interface PackageImageBlockProps {
+  el: {
+    subtitle: string;
+    image: {
+      filename: string;
+      alt: string;
+    };
+
+    video: boolean;
+    image_right: boolean;
+    second_image: {
+      filename: string;
+      alt: string;
+    };
+
+    third_image: {
+      filename: string;
+      alt: string;
+    };
+
+    content: React.ReactNode[];
+    dropdown_content: React.ReactNode[];
+    second_content: React.ReactNode[];
+    third_content: React.ReactNode[];
+
+    read_less_btn: string;
+    read_more_btn: string;
+  };
+}
+export const PackageImageBlock = ({ el }: PackageImageBlockProps) => {
   const [readMore, setReadMore] = useState(false);
+
+  console.log(el);
 
   const handleDropdown = () => {
     setReadMore(!readMore);
@@ -39,7 +70,7 @@ export const PackageImageBlock = ({ el }: any) => {
             </div>
           )}
 
-          <div className="text-[14px] mt-4 lg:mt-0 w-[100%] lg:max-w-[48%]">
+          <div className="text-[14px] lg:mt-0 w-[100%] lg:max-w-[48%]">
             <div className="package-container">{render(el.content)}</div>
             {readMore && (
               <div className="lg:mt-4">{render(el.dropdown_content)}</div>
@@ -71,7 +102,7 @@ export const PackageImageBlock = ({ el }: any) => {
         <div
           className={`lg:flex  flex-row items-center gap-6 grid grid-cols-1 ${
             el.image_right &&
-            "flex-row-reverse justify-center -mt-[2rem] -mb-[2rem] ml-[0.6rem]"
+            "lg:flex-row-reverse justify-center lg:-mt-[2rem] lg:-mb-[2rem] lg:ml-[0.6rem]"
           }`}
         >
           {el.video ? (
@@ -100,8 +131,8 @@ export const PackageImageBlock = ({ el }: any) => {
         </div>
       ) : null}
       {el?.third_image?.filename ? (
-        <div className="flex justify-center items-center gap-6">
-          <div className="relative w-[42.2vw] h-[400px]">
+        <div className="lg:flex justify-center items-center gap-6 mt-6 lg:mt-0">
+          <div className="relative lg:w-[42.2vw] h-[400px]">
             <div>
               <Image
                 src={el?.third_image?.filename}
@@ -112,7 +143,7 @@ export const PackageImageBlock = ({ el }: any) => {
             </div>
           </div>
 
-          <div className="max-w-[48%]">
+          <div className="lg:max-w-[48%] mt-6 lg:mt-0">
             <div>{render(el.third_content)}</div>
           </div>
         </div>

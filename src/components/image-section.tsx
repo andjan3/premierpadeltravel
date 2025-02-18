@@ -3,8 +3,23 @@ import { storyblokEditable } from "@storyblok/react";
 import Image from "next/image";
 import { render } from "storyblok-rich-text-react-renderer";
 import LinkBtn from "./link-btn";
+import { ImageProps } from "./utils/interface";
 
-export const ImageSection = ({ blok }: any) => {
+interface ImageSectionProps {
+  blok: {
+    heading: string;
+    image: ImageProps;
+    link: {
+      cached_url: string;
+    };
+    link_title: string;
+    content: React.ReactNode[];
+    show_link: boolean;
+    styling_left: boolean;
+  };
+}
+
+export const ImageSection = ({ blok }: ImageSectionProps) => {
   const { heading, image, link, link_title, content, show_link, styling_left } =
     blok;
 

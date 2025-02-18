@@ -16,6 +16,17 @@ h2 {
   color: #004e70;
   text-transform: uppercase;
 }
+
+input,
+select,
+textarea {
+  outline: none;
+  background-color: white;
+}
+input[type="datetime-local"] {
+  background-color: white;
+}
+
 a {
   cursor: pointer;
 }

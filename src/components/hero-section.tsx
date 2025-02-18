@@ -1,8 +1,22 @@
 import LinkBtn from "@/components/link-btn";
-import { storyblokEditable, StoryblokComponent } from "@storyblok/react/rsc";
+import { storyblokEditable } from "@storyblok/react/rsc";
 import Image from "next/image";
+import { ImageProps } from "./utils/interface";
 
-const HeroSection = ({ blok }: any) => {
+interface HeroSectionProps {
+  blok: {
+    paragraph1: string;
+    paragraph2: string;
+    title: string;
+    buttonTitle: string;
+    button: {
+      cached_url: string;
+    };
+    heroImage: ImageProps;
+    image: ImageProps;
+  };
+}
+const HeroSection = ({ blok }: HeroSectionProps) => {
   const {
     paragraph1,
     paragraph2,

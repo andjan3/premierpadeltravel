@@ -2,7 +2,29 @@ import Image from "next/image";
 import Link from "next/link";
 import { render } from "storyblok-rich-text-react-renderer";
 
-export const TripsCard = ({ item, boolean }: any) => {
+interface TripsCardProps {
+  item: {
+    id: string;
+    full_slug: string;
+
+    content: {
+      show_overlay_text: boolean;
+      overlay_text: string;
+      future_image: {
+        filename: string;
+        alt: string;
+      };
+      position: boolean;
+      heading: string;
+      date: string;
+      future_content: React.ReactNode[];
+    };
+  };
+
+  boolean: boolean;
+}
+
+export const TripsCard = ({ item, boolean }: TripsCardProps) => {
   return (
     <>
       <Link href={`/${item.full_slug.replace(/^(da|en)\//, "")}`} key={item.id}>
@@ -21,7 +43,7 @@ export const TripsCard = ({ item, boolean }: any) => {
               {item.content.future_image.filename !== "" && (
                 <Image
                   src={item.content.future_image.filename}
-                  alt=""
+                  alt={item.content.future_image.alt}
                   fill
                   className="object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
                 />
