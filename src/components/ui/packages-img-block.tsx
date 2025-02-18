@@ -36,8 +36,6 @@ interface PackageImageBlockProps {
 export const PackageImageBlock = ({ el }: PackageImageBlockProps) => {
   const [readMore, setReadMore] = useState(false);
 
-  console.log(el);
-
   const handleDropdown = () => {
     setReadMore(!readMore);
   };
