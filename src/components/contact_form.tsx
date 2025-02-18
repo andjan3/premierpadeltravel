@@ -6,7 +6,6 @@ interface ContactFormProps {
 }
 
 export const ContactForm = ({ settings }: ContactFormProps) => {
-  console.log(settings);
   return (
     <div>
       <StandardForm settings={settings} />
