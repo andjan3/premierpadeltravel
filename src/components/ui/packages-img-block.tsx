@@ -82,7 +82,7 @@ export const PackageImageBlock = ({ el }: any) => {
               <source src={el?.second_image?.filename} type="video/mp4" />
             </video>
           ) : (
-            <div className="relative w-[42.2vw] h-[400px]">
+            <div className="relative lg:w-[42.2vw] h-[400px]">
               <div>
                 <Image
                   src={el?.second_image?.filename}
