@@ -5,10 +5,7 @@ import { render } from "storyblok-rich-text-react-renderer";
 export const TripsCard = ({ item, boolean }: any) => {
   return (
     <>
-      <Link
-        href={`/${item.full_slug.replace(/^(da|en)\//, "")}`}
-        key={item.uuid}
-      >
+      <Link href={`/${item.full_slug.replace(/^(da|en)\//, "")}`} key={item.id}>
         <div>
           <div className="bg-white rounded-lg shadow-lg mb-4 lg:mb-0">
             <div

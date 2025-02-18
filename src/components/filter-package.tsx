@@ -3,9 +3,11 @@ import Image from "next/image";
 import { render } from "storyblok-rich-text-react-renderer";
 
 import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from "react";
 import { StandardForm } from "@/app/components/form/standard-form";
 import { TripsCard } from "./ui/trips-card";
+import { v4 as uuidv4 } from "uuid";
+
 export const Filter = ({ blok, resor, settings }: any) => {
   const [filter, setFilter] = useState("alla");
   const [filterContent, setFilterContent] = useState("alla");
@@ -58,11 +60,11 @@ export const Filter = ({ blok, resor, settings }: any) => {
           <div className="invisible lg:visible">|</div>
 
           {blok.filter_links.map(
-            (el: any) =>
+            (el: any, index: number) =>
               el.title && (
-                <>
+                <React.Fragment key={uuidv4()}>
                   <button
-                    key={el.link_title}
+                    key={uuidv4()}
                     onClick={() => handleFilter(el.link_title)}
                     className={
                       filter === `${el.link_title}`
@@ -73,7 +75,7 @@ export const Filter = ({ blok, resor, settings }: any) => {
                     {el.title}
                   </button>
                   <div className="invisible lg:visible">|</div>
-                </>
+                </React.Fragment>
               )
           )}
         </div>
@@ -81,7 +83,7 @@ export const Filter = ({ blok, resor, settings }: any) => {
       <div className="w-[100%] flex justify-center text-center mt-4 lg:mt-8 text-[14px] leading-[22px]">
         {filteredContent.map((el: any, index: number) => {
           return (
-            <div className="w-[90%] lg:w-[40%]" key={index}>
+            <div className="w-[90%] lg:w-[40%]" key={uuidv4()}>
               {el.content}
             </div>
           );
@@ -91,7 +93,7 @@ export const Filter = ({ blok, resor, settings }: any) => {
         {filteredTitles.map((el: any, index: number) => {
           return (
             <div
-              key={el.section_title}
+              key={uuidv4()}
               className={`${
                 el.section_title == ""
                   ? "invisible"
@@ -120,7 +122,7 @@ export const Filter = ({ blok, resor, settings }: any) => {
                       <TripsCard
                         item={item}
                         boolean={blok.smaller_cards}
-                        key={index}
+                        key={uuidv4()}
                       />
                     );
                   })}
@@ -133,7 +135,7 @@ export const Filter = ({ blok, resor, settings }: any) => {
         return (
           <div
             className="flex justify-center mb-20 lg:mb-0 lg:mt-10"
-            key={index}
+            key={uuidv4()}
           >
             <StandardForm settings={settings} />
           </div>

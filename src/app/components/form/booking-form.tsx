@@ -116,7 +116,7 @@ export const BookingForm = ({ settings }: any) => {
       />
 
       {openCalender && (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 w-[100%] m-auto ">
           <input
             type="datetime-local"
             name="departureDate"
@@ -124,6 +124,7 @@ export const BookingForm = ({ settings }: any) => {
             placeholder={departure}
             value={formData.departureDate}
             onChange={handleInputChange}
+            className="w-[150px] h-[60px] lg:w-[100%]"
           />
           <input
             type="datetime-local"
@@ -132,6 +133,7 @@ export const BookingForm = ({ settings }: any) => {
             placeholder={arrival}
             value={formData.arrivalDate}
             onChange={handleInputChange}
+            className="w-[150px] lg:w-[100%]"
           />
         </div>
       )}
