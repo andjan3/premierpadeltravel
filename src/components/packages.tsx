@@ -35,7 +35,7 @@ export const Packages = ({ paket, resor, lang, settings }: any) => {
           objectPosition="center"
           src={content.hero.filename}
         />
-        <p className="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white text-[45px] md:text-6xl font-bold uppercase w-full">
+        <p className="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white lg:text-[45px] text-[35px] md:text-6xl font-bold uppercase w-full">
           {content.hero_title}
         </p>
       </div>
