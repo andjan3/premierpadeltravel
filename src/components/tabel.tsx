@@ -14,7 +14,6 @@ interface TabelProps {
 
 export const Tabel = ({ tabel, lang }: TabelProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(lang);
 
   const handleOpen = () => {
     setIsOpen((prevState) => !prevState);
