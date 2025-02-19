@@ -57,7 +57,7 @@ export const PackageImageBlock = ({ el }: PackageImageBlockProps) => {
             >
               <source src={el?.image?.filename} type="video/mp4" />
             </video>
-          ) : (
+          ) : el?.image?.filename ? (
             <div className="relative lg:w-[42.2vw] h-[300px] lg:h-[400px]">
               <Image
                 src={el?.image?.filename}
@@ -66,7 +66,7 @@ export const PackageImageBlock = ({ el }: PackageImageBlockProps) => {
                 alt={el?.image?.alt}
               />
             </div>
-          )}
+          ) : null}
 
           <div className="text-[14px] lg:mt-0 w-[100%] lg:max-w-[48%]">
             <div className="package-container">{render(el.content)}</div>

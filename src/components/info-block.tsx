@@ -8,9 +8,10 @@ import { InfoBlockElement } from "./utils/interface";
 
 interface InfoBlock {
   paket: InfoBlockElement[];
+  lang: any;
 }
 
-export const InfoBlock = ({ paket }: InfoBlock) => {
+export const InfoBlock = ({ paket, lang }: InfoBlock) => {
   const { open, setOpen } = useStore();
 
   const handleClick = (id: any) => {
@@ -48,7 +49,7 @@ export const InfoBlock = ({ paket }: InfoBlock) => {
 
                 <DropDown el={el} />
 
-                <Tabel tabel={el} />
+                <Tabel tabel={el} lang={lang} />
               </div>
             </div>
           );

@@ -28,10 +28,10 @@ const page = async ({ params }: { params: { slug: string } }) => {
   return (
     <div>
       <Packages
-        paket={paket.data.data.story}
+        paket={paket?.data?.data?.story}
         lang={lang}
-        resor={resor.data.data.stories}
-        settings={settings.data.data.story.content}
+        resor={resor?.data?.data?.stories}
+        settings={settings?.data?.data?.story?.content}
       />
     </div>
   );

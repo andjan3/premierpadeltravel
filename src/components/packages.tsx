@@ -3,16 +3,13 @@
 import Image from "next/image";
 import { Gallery } from "@/components/gallery";
 import { render } from "storyblok-rich-text-react-renderer";
-import { CiCalendarDate } from "react-icons/ci";
-import { CiLocationOn } from "react-icons/ci";
-import { IoTicketOutline } from "react-icons/io5";
 import { BookingForm } from "@/app/components/form/booking-form";
 import { NewsLetterForm } from "@/app/components/form/news-letter-form";
-import useStore from "@/components/lib/store";
 import { TripsCard } from "./ui/trips-card";
 import { Card } from "./card";
 import { InfoBlock } from "./info-block";
 import { Settings } from "./utils/interface";
+import { PackageInfo } from "./ui/package-info";
 
 interface PackagesProps {
   paket: ContentProps;
@@ -26,7 +23,7 @@ interface PackagesProps {
 interface ContentProps {
   content: {
     hero: {
-      name: string;
+      alt: string;
       filename: string;
     };
     hero_title: string;
@@ -50,23 +47,14 @@ interface ContentProps {
 }
 
 export const Packages = ({ paket, resor, lang, settings }: PackagesProps) => {
-  const text =
-    lang === "sv" ? "Läs mer" : lang === "en" ? "Read more" : "Læs mere";
-
-  const text2 =
-    lang === "sv" ? "Läs mindre" : lang === "en" ? "Read less" : "Læs mindre";
-
-  const { openCalender, setOpenCalender } = useStore();
-
   const { content } = paket;
-  console.log("content", content);
 
   return (
     <div>
       <div className="relative h-[50vh] lg:h-[50vh] lg:w-[100vw]">
         <div className="bg-black opacity-30 w-full absolute top-0 h-full z-10" />
         <Image
-          alt={content.hero.name}
+          alt={content.hero.alt}
           layout="fill"
           className="object-cover"
           objectPosition="center"
@@ -79,51 +67,11 @@ export const Packages = ({ paket, resor, lang, settings }: PackagesProps) => {
 
       <div className="package-container flex flex-col w-[85%] m-auto">
         <div className="lg:grid grid-cols-2 gap-32 w-[100%] mt-6 lg:p-4 lg:mt-14 mb-6">
-          <div className="flex flex-col gap-4">
-            <h2>{content.heading}</h2>
-            <div className="flex gap-4">
-              <span>
-                <CiCalendarDate fontSize={30} />
-              </span>
-              <div className="flex flex-col">
-                <h2 className="smaller-heading ">{content.date_title}</h2>
-                <div className="text-[18px]">{content.date}</div>
-                {content.choose_dates !== "" && (
-                  <button
-                    className="text-[#00e154] text-[14px] pt-2 font-medium scroll text-start"
-                    onClick={() => setOpenCalender(!openCalender)}
-                  >
-                    {content.choose_dates}
-                  </button>
-                )}
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <span>
-                <CiLocationOn fontSize={30} />
-              </span>
-              <div className="flex flex-col">
-                <h2 className="smaller-heading ">{content.position_title}</h2>
-                <div className="text-[18px]">{content.position}</div>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <span>
-                <IoTicketOutline fontSize={30} />
-              </span>
-              <div className="flex flex-col">
-                <h2 className="smaller-heading ">{content.price_title}</h2>
-                <div className="text-[18px]">{content.price}</div>
-              </div>
-            </div>
-            <div className="package-info lg:w-[670px] mt-4 mb-8 lg:mb-0 lg:mt-10">
-              {render(content.package_info)}
-            </div>
-          </div>
+          <PackageInfo content={content} />
           <BookingForm lang={lang} settings={settings} />
         </div>
 
-        <InfoBlock paket={content.info_block} />
+        <InfoBlock paket={content.info_block} lang={lang} />
 
         {content.gallery.length > 0 && (
           <Gallery images={content.gallery} content={content} />

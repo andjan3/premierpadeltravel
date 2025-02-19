@@ -17,6 +17,6 @@ export async function getData() {
 
     return { data };
   } catch (error: any) {
-    throw error;
+    return { data: null };
   }
 }

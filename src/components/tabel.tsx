@@ -9,10 +9,12 @@ interface TabelProps {
     tabel: TabelRowProps[];
     subtitle: string;
   };
+  lang: any;
 }
 
-export const Tabel = ({ tabel }: TabelProps) => {
+export const Tabel = ({ tabel, lang }: TabelProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  console.log(lang);
 
   const handleOpen = () => {
     setIsOpen((prevState) => !prevState);
@@ -75,7 +77,17 @@ export const Tabel = ({ tabel }: TabelProps) => {
           className="flex items-center cursor-pointer pt-4"
           onClick={handleOpen}
         >
-          {isOpen ? "Läs mindre" : "Läs mer"}
+          {isOpen
+            ? lang === "en"
+              ? "Read less"
+              : lang === "da"
+              ? "Læs mindre"
+              : "Läs mindre"
+            : lang === "en"
+            ? "Read more"
+            : lang === "da"
+            ? "Læs mere"
+            : "Läs mer"}
           <IoIosArrowDown className={`ml-2 ${isOpen && "rotate-180"}`} />
         </div>
       </div>
