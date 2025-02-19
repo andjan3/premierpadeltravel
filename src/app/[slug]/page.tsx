@@ -1,5 +1,4 @@
 import { getStoryblokApi, StoryblokStory } from "@storyblok/react/rsc";
-import { redirect } from "next/navigation";
 import { getAllResor } from "../lib/get-all-resor";
 import { getData } from "../lib/get-data";
 import { Metadata } from "next";
@@ -12,25 +11,34 @@ async function fetchData(slug: string) {
 
   const client = getStoryblokApi();
 
-  const data = await client.get(`cdn/stories/${slug}`, sbParams);
-
-  return { data };
+  try {
+    const data = await client.get(`cdn/stories/${slug}`, sbParams);
+    return { data };
+  } catch (error: any) {
+    return { data: null };
+  }
 }
 
 const Page = async ({ params }: { params: { slug: string } }) => {
-  const pathname = params.slug;
-  const slugName = pathname === undefined ? `home` : pathname;
+  const pathname = params.slug || "home";
+  const slugName = pathname;
+
   const story = await fetchData(slugName);
   const resor = await getAllResor();
   const settings = await getData();
 
   const lang = process.env.STORYBLOCK_LANG || "en";
+
+  if (!story.data) {
+    return <div>Error fetching story data. Please try again later.</div>;
+  }
+
   return (
     <StoryblokStory
       story={story.data.data.story}
-      resor={resor.data.data.stories}
+      resor={resor?.data?.data?.stories}
       lang={lang}
-      settings={settings.data.data.story.content}
+      settings={settings?.data?.data?.story?.content}
     />
   );
 };
@@ -40,14 +48,22 @@ export const generateMetadata = async ({
 }: {
   params: { slug: string };
 }): Promise<Metadata> => {
-  const pathname = params.slug;
-  const slugName = !pathname || pathname === "" ? "home" : pathname;
+  const pathname = params.slug || "home";
+  const slugName = pathname;
+
   const data = await fetchData(slugName);
 
+  if (!data.data) {
+    return {
+      title: "Premier padel travel",
+      description: "Default description",
+    };
+  }
+
   return {
-    title: data?.data.data.story?.content?.seo.title || "Premier padel travel",
+    title: data.data.data.story.content.seo.title || "Premier padel travel",
     description:
-      data?.data.data.story?.content?.seo.description || "Default description",
+      data.data.data.story.content.seo.description || "Default description",
   };
 };
 

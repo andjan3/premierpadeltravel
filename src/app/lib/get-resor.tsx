@@ -9,9 +9,11 @@ export async function getResor(slug: string) {
   };
 
   const client = getStoryblokApi();
+  const slugName = slug || "default-slug";
+
   try {
     const data = await client.get(
-      `cdn/stories/resor-och-paket/${slug}`,
+      `cdn/stories/resor-och-paket/${slugName}`,
       sbParams
     );
 

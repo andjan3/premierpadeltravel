@@ -16,8 +16,9 @@ interface FilterProps {
 
   resor: string[];
   settings: Settings;
+  lang: any;
 }
-export const Filter = ({ blok, resor, settings }: FilterProps) => {
+export const Filter = ({ blok, resor, settings, lang }: FilterProps) => {
   const [filter, setFilter] = useState("alla");
   const [filterContent, setFilterContent] = useState("alla");
   const handleFilter = (data: string) => {
@@ -64,7 +65,11 @@ export const Filter = ({ blok, resor, settings }: FilterProps) => {
             }
             onClick={() => handleFilter("alla")}
           >
-            Alla resor
+            {lang == "en"
+              ? "All trips"
+              : lang == "da"
+              ? "Alle ture"
+              : "Alla resor"}
           </button>
           <div className="invisible lg:visible">|</div>
 
