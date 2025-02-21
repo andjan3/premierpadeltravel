@@ -26,12 +26,16 @@ export const Card = ({ content }: ContentProps) => {
   };
 
   return (
-    <div className={`${content.card ? "block lg:-mb-16" : "hidden"}`}>
-      <div className="lg:w-[50%]">{render(content.content)}</div>
+    <div className={`${content.card ? "lg:-mb-16" : "hidden"} `}>
+      {content.content && (
+        <div className="w-[90%] ml-4 -mb-6 lg:w-[90%] lg:ml-12 lg:mb-0 ">
+          {render(content.content)}
+        </div>
+      )}
       <div
         className={`${
           content.card?.length > 0
-            ? "grid grid-cols-1 lg:grid-cols-2 gap-10 mb-8"
+            ? "flex flex-col justify-center items-center gap-10 mb-8 mt-4 lg:mt-0"
             : "invisible"
         }`}
       >
@@ -43,7 +47,7 @@ export const Card = ({ content }: ContentProps) => {
             <div
               key={el.title}
               className={`lg:flex flex-row gap-4 bg-white rounded shadow-lg ${
-                openStates[index] ? "lg:h-[65vh]" : "lg:h-[52vh]"
+                openStates[index] ? "lg:h-[65vh]" : "lg:h-[52vh] w-[90%]"
               }`}
             >
               <div className="lg:w-[50%]">

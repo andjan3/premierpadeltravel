@@ -26,6 +26,7 @@ interface ContentProps {
       alt: string;
       filename: string;
     };
+    info_block_title: string;
     hero_title: string;
     heading: string;
     date: string;
@@ -48,6 +49,7 @@ interface ContentProps {
 
 export const Packages = ({ paket, resor, lang, settings }: PackagesProps) => {
   const { content } = paket;
+  console.log(paket);
 
   return (
     <div>
@@ -71,6 +73,9 @@ export const Packages = ({ paket, resor, lang, settings }: PackagesProps) => {
           <BookingForm lang={lang} settings={settings} />
         </div>
 
+        <h2 className="text-center lg:mb-6 mt-10">
+          {content.info_block_title}
+        </h2>
         <InfoBlock paket={content.info_block} lang={lang} />
 
         {content.gallery.length > 0 && (
