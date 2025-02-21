@@ -11,12 +11,21 @@ interface AboutProps {
     form: boolean;
     no_spacing: boolean;
     citat: React.ReactNode[];
+    citat_person: string;
   };
 
   settings: Settings;
 }
 export const About = ({ blok, settings }: AboutProps) => {
-  const { Heading, content, styling_left, form, citat, no_spacing } = blok;
+  const {
+    Heading,
+    content,
+    styling_left,
+    form,
+    citat,
+    no_spacing,
+    citat_person,
+  } = blok;
 
   return (
     <div
@@ -27,10 +36,17 @@ export const About = ({ blok, settings }: AboutProps) => {
     `}
       {...storyblokEditable(blok)}
     >
-      <h2 className="ordinaryHeading">{Heading}</h2>
+      <h2 className="ordinary-heading pb-2 text-center lg:text-start">
+        {Heading}
+      </h2>
       <div className="lg:flex justify-between">
         <div className="paragraph">{render(content)}</div>
-        <div className="citat">{render(citat)}</div>
+        <div className="flex flex-col">
+          <div className="citat">{render(citat)}</div>
+          <div className="text-14px italic lg:ml-10 lg:text-start pt-2 text-center">
+            {citat_person}
+          </div>
+        </div>
       </div>
 
       {form && <TravelReqForm settings={settings} />}
