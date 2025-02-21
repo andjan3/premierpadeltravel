@@ -43,22 +43,20 @@ export const PackageImageBlock = ({ el }: PackageImageBlockProps) => {
   return (
     <>
       <div
-        className={`${"image" in el && el.image ? "flex  gap-6" : "hidden"}`}
+        className={`${"image" in el && el.image ? "lg:flex  gap-6" : "hidden"}`}
       >
         <div
-          className={` lg:flex  justify-center gap-6 grid grid-cols-1 mb-6 lg:mb-0 ${
-            readMore ? "items-start" : "items-center"
-          }`}
+          className={` lg:flex flex-col items-center justify-center gap-6 grid grid-cols-1 mb-6 lg:mb-0 `}
         >
           {el.video ? (
             <video
               controls
-              className="w-[100%] lg:w-[50%] h-full lg:max-h-[364px] object-cover"
+              className="w-[100%] lg:w-[90.2%] h-full lg:max-h-[450px] object-cover"
             >
               <source src={el?.image?.filename} type="video/mp4" />
             </video>
           ) : el?.image?.filename ? (
-            <div className="relative lg:w-[42.2vw] h-[300px] lg:h-[400px]">
+            <div className="relative w-[90%] mx-auto lg:w-[52.5vw] h-[300px] lg:h-[450px]">
               <Image
                 src={el?.image?.filename}
                 fill
@@ -68,10 +66,10 @@ export const PackageImageBlock = ({ el }: PackageImageBlockProps) => {
             </div>
           ) : null}
 
-          <div className="text-[14px] lg:mt-0 w-[100%] lg:max-w-[48%]">
+          <div className="text-[14px] w-[90%] mx-auto lg:mt-0  lg:max-w-[89.8%]">
             <div className="package-container">{render(el.content)}</div>
             {readMore && (
-              <div className="lg:mt-4">{render(el.dropdown_content)}</div>
+              <div className="mt-4">{render(el.dropdown_content)}</div>
             )}
             <div className={`${!el.video ? "hidden" : "text-[14px]"}`}>
               {readMore ? (
@@ -98,20 +96,17 @@ export const PackageImageBlock = ({ el }: PackageImageBlockProps) => {
 
       {el?.second_image?.filename ? (
         <div
-          className={`lg:flex  flex-row items-center gap-6 grid grid-cols-1 ${
-            el.image_right &&
-            "lg:flex-row-reverse justify-center lg:-mt-[2rem] lg:-mb-[2rem] lg:ml-[0.6rem]"
-          }`}
+          className={`lg:flex w-[90%] lg:w-[100%] mx-auto  lg:flex-col flex-row items-center gap-6 grid grid-cols-1`}
         >
           {el.video ? (
             <video
               controls
-              className="w-[100%] lg:w-[50%] h-full lg:max-h-[364px] object-cover"
+              className="w-[100%] lg:w-[90.4%] h-full lg:max-h-[450px] object-cover"
             >
               <source src={el?.second_image?.filename} type="video/mp4" />
             </video>
           ) : (
-            <div className="relative lg:w-[42.2vw] h-[400px]">
+            <div className="relative lg:w-[52.8vw] h-[450px]">
               <div>
                 <Image
                   src={el?.second_image?.filename}
@@ -122,15 +117,15 @@ export const PackageImageBlock = ({ el }: PackageImageBlockProps) => {
               </div>
             </div>
           )}
-          <div className="w-[100%] lg:max-w-[48%]">
+          <div className="w-[100%] lg:max-w-[89.8%]">
             <h3 className="font-semibold text-[14px]">{el.subtitle}</h3>
             <div>{render(el.second_content)}</div>
           </div>
         </div>
       ) : null}
       {el?.third_image?.filename ? (
-        <div className="lg:flex justify-center items-center gap-6 mt-6 lg:mt-0">
-          <div className="relative lg:w-[42.2vw] h-[400px]">
+        <div className="lg:flex flex-col justify-center items-center gap-6 mt-6 lg:mt-0">
+          <div className="relative w-[90%] mx-auto lg:w-[52.2vw] h-[450px]">
             <div>
               <Image
                 src={el?.third_image?.filename}
@@ -141,7 +136,7 @@ export const PackageImageBlock = ({ el }: PackageImageBlockProps) => {
             </div>
           </div>
 
-          <div className="lg:max-w-[48%] mt-6 lg:mt-0">
+          <div className="lg:max-w-[89.8%] mt-6 lg:mt-0">
             <div>{render(el.third_content)}</div>
           </div>
         </div>
